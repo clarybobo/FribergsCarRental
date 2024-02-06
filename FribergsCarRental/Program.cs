@@ -1,13 +1,23 @@
-namespace FribergsCarRental
+using FribergsCarRental.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace FribergsBiluthyrning
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext") ?? throw new InvalidOperationException("Connection string 'RazorBiluthyrningContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddTransient<ICar, CarRepository>();
+            builder.Services.AddTransient<ICustomer, CustomerRepository>();
+            builder.Services.AddTransient<IAdmin, AdminRepository>();
+            builder.Services.AddTransient<IBooking, BookingRepository>();
+
 
             var app = builder.Build();
 
