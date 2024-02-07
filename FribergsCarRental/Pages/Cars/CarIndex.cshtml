@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.PictureURL)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.CarId">Edit</a> |
+                <a asp-page="./EditCar" asp-route-id="@item.CarId">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.CarId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CarId">Delete</a>
+                <a asp-page="./DeleteCar" asp-route-id="@item.CarId">Delete</a>
             </td>
         </tr>
 }

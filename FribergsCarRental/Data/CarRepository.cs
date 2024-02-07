@@ -24,14 +24,15 @@ namespace FribergsCarRental.Data
             return await applicationDbContext.Cars.OrderBy(c => c.CarId).ToListAsync();
         }
 
-        public async Task<Car> GetCarByIdAsync(int id)
+        public async Task<Car> GetCarByIdAsync(int? id)
         {
-            return await applicationDbContext.Cars.FindAsync(id);
+            var car = await applicationDbContext.Cars.FirstOrDefaultAsync(c => c.CarId == id);
+            return car;
         }
 
         public async Task<Car> EditCarAsync(Car car, int id)
         {
-            var existingCar = await applicationDbContext.Cars.FindAsync(id);
+            var existingCar = await applicationDbContext.Cars.FirstOrDefaultAsync(c => c.CarId == id);
 
             if (existingCar != null)
             {
@@ -40,14 +41,12 @@ namespace FribergsCarRental.Data
                 applicationDbContext.SaveChanges();
                 return existingCar;
             }
-
             return null;
         }
 
-
-        public async Task DeleteCarAsync(int id)
+        public async Task DeleteCarAsync(int? id)
         {
-            var existingCar = await applicationDbContext.Cars.FindAsync(id);
+            var existingCar = await applicationDbContext.Cars.FirstOrDefaultAsync(c => c.CarId == id);
             if (existingCar != null)
             {
                 applicationDbContext.Cars.Remove(existingCar);
