@@ -12,11 +12,11 @@ namespace FribergsCarRental.Pages.Customers
 {
     public class CreateModel : PageModel
     {
-        private readonly FribergsCarRental.Data.ApplicationDbContext _context;
+        private readonly ICustomer customerRepository;
 
-        public CreateModel(FribergsCarRental.Data.ApplicationDbContext context)
+        public CreateModel(ICustomer customerRepository)
         {
-            _context = context;
+            this.customerRepository = customerRepository; 
         }
 
         public IActionResult OnGet()
@@ -25,21 +25,22 @@ namespace FribergsCarRental.Pages.Customers
         }
 
         [BindProperty]
-        public Customer Customer { get; set; } = default!;
-        
+        public Customer Customer { get; set; } = new Customer();
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Customers == null || Customer == null)
+
+            if (!ModelState.IsValid || Customer == null)
             {
                 return Page();
             }
+            var customer = await customerRepository.AddCustomerAsync(Customer);
 
-            _context.Customers.Add(Customer);
-            await _context.SaveChangesAsync();
+            Customer = customer;
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("CustomerIndex");
         }
     }
 }

@@ -23,7 +23,6 @@ namespace FribergsCarRental.Pages.Cars
 
         public async Task OnGetAsync()
         {
-
             Car = (await carRepository.GetAllCarsAsync()).ToList();
         }
     }

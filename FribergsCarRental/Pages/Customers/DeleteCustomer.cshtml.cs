@@ -57,7 +57,7 @@ namespace FribergsCarRental.Pages.Customers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("CustomerIndex");
         }
     }
 }
