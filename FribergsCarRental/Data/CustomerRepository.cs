@@ -16,11 +16,11 @@ namespace FribergsCarRental.Data
             return await applicationDbContext.Customers.OrderBy(c => c.CustomerId).ToListAsync();
         }
 
-        public async Task<Customer> GetCustomerByIdAsync(int id)
+        public async Task<Customer> GetCustomerByIdAsync(int? id)
         {
-            //Bytte från FirstOrDefault();
-            //FindAsync hämtar entities med deras Primary Key
-            return await applicationDbContext.Customers.FindAsync(id);
+           var customer = await applicationDbContext.Customers.FirstOrDefaultAsync(c => c.CustomerId == id);
+           return customer; 
+           
         }
 
         public async Task<Customer> AddCustomerAsync(Customer customer)
@@ -30,11 +30,10 @@ namespace FribergsCarRental.Data
             return customer;
         }
 
-        public async Task DeleteCustomerAsync(int id)
+        public async Task DeleteCustomerAsync(int? id)
         {
-            //var customer = await applicationDbContext.Customers.FirstOrDefaultAsync(c => c.CustomerId == id);
+            var customer = await applicationDbContext.Customers.FirstOrDefaultAsync(c => c.CustomerId == id);
 
-            var customer = await applicationDbContext.Customers.FindAsync(id);
             if (customer != null)
             {
                 applicationDbContext.Remove(customer);
@@ -44,7 +43,7 @@ namespace FribergsCarRental.Data
 
         public async Task<Customer> EditCustomerAsync(Customer customer, int id)
         {
-            var existingCustomer = await applicationDbContext.Customers.FindAsync(id);
+            var existingCustomer = await applicationDbContext.Customers.FirstOrDefaultAsync(c => c.CustomerId == id);
             if (existingCustomer != null)
             {
                 existingCustomer.FirstName = customer.FirstName;

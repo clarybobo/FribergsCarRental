@@ -13,11 +13,11 @@ namespace FribergsCarRental.Pages.Customers
 {
     public class EditModel : PageModel
     {
-        private readonly FribergsCarRental.Data.ApplicationDbContext _context;
+        private readonly ICustomer customerRepository;
 
-        public EditModel(FribergsCarRental.Data.ApplicationDbContext context)
+        public EditModel(ICustomer customerRepository)
         {
-            _context = context;
+            this.customerRepository = customerRepository;
         }
 
         [BindProperty]
@@ -25,16 +25,18 @@ namespace FribergsCarRental.Pages.Customers
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var customer =  await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await customerRepository.GetCustomerByIdAsync(id);
+
             if (customer == null)
             {
                 return NotFound();
             }
+
             Customer = customer;
             return Page();
         }
@@ -48,15 +50,18 @@ namespace FribergsCarRental.Pages.Customers
                 return Page();
             }
 
-            _context.Attach(Customer).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                var editedCustomer = await customerRepository.EditCustomerAsync(Customer, Customer.CustomerId);
+                if (editedCustomer == null)
+                {
+                    return NotFound();
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(Customer.CustomerId))
+                var existingCustomer = customerRepository.GetCustomerByIdAsync(Customer.CustomerId);
+                if (existingCustomer == null)
                 {
                     return NotFound();
                 }
@@ -66,12 +71,7 @@ namespace FribergsCarRental.Pages.Customers
                 }
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool CustomerExists(int id)
-        {
-          return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
+            return RedirectToPage("CustomerIndex");
         }
     }
 }

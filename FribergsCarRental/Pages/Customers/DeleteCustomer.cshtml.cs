@@ -12,51 +12,43 @@ namespace FribergsCarRental.Pages.Customers
 {
     public class DeleteModel : PageModel
     {
-        private readonly FribergsCarRental.Data.ApplicationDbContext _context;
+        private readonly ICustomer customerRepository;
 
-        public DeleteModel(FribergsCarRental.Data.ApplicationDbContext context)
+        public DeleteModel(ICustomer customerRepository)
         {
-            _context = context;
+            this.customerRepository = customerRepository;
         }
 
         [BindProperty]
-      public Customer Customer { get; set; } = default!;
+        public Customer Customer { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await customerRepository.GetCustomerByIdAsync(id);
 
             if (customer == null)
             {
                 return NotFound();
             }
-            else 
-            {
-                Customer = customer;
-            }
+            Customer = customer;
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Customers == null)
+            var customer = await customerRepository.GetCustomerByIdAsync(id);
+
+            if (customer == null)
             {
                 return NotFound();
             }
-            var customer = await _context.Customers.FindAsync(id);
-
-            if (customer != null)
-            {
-                Customer = customer;
-                _context.Customers.Remove(Customer);
-                await _context.SaveChangesAsync();
-            }
-
+            
+            await customerRepository.DeleteCustomerAsync(id);
             return RedirectToPage("CustomerIndex");
         }
     }
