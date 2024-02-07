@@ -25,7 +25,7 @@ namespace FribergsCarRental.Pages.Users
         }
 
         [BindProperty]
-        public User TheUser { get; set; } = new User();
+        public TheUser TheUser { get; set; } = new TheUser();
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD

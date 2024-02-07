@@ -20,7 +20,7 @@ namespace FribergsCarRental.Pages.Users
             this.userRepository = userRepository;
         }
         [BindProperty]
-        public User TheUser { get; set; } = default!;
+        public TheUser TheUser { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -51,7 +51,7 @@ namespace FribergsCarRental.Pages.Users
 
             try
             {
-                var editedUser = await userRepository.EditUserAsync(TheUser, TheUser.UserId);
+                var editedUser = await userRepository.EditUserAsync(TheUser, TheUser.TheUserId);
                 if (editedUser == null)
                 {
                     return NotFound();
@@ -59,7 +59,7 @@ namespace FribergsCarRental.Pages.Users
             }
             catch (DbUpdateConcurrencyException)
             {
-                var existingUser = userRepository.GetUserByIdAsync(TheUser.UserId);
+                var existingUser = userRepository.GetUserByIdAsync(TheUser.TheUserId);
                 if (existingUser == null)
                 {
                     return NotFound();

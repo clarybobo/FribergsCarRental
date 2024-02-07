@@ -20,7 +20,7 @@ namespace FribergsCarRental.Pages.Users
         }
 
         [BindProperty]
-      public User TheUser { get; set; } = default!;
+      public TheUser TheUser { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

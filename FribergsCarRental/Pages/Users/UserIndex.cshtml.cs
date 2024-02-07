@@ -19,7 +19,7 @@ namespace FribergsCarRental.Pages.Users
             this.userRepository = userRepository;
         }
 
-        public IList<User> TheUser { get; set; } = default!;
+        public IList<TheUser> TheUser { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

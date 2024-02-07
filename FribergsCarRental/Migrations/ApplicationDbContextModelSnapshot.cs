@@ -62,9 +62,6 @@ namespace FribergsCarRental.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -77,8 +74,6 @@ namespace FribergsCarRental.Migrations
                     b.HasKey("BookingId");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Bookings");
                 });
@@ -137,13 +132,13 @@ namespace FribergsCarRental.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("FribergsCarRental.Data.Models.User", b =>
+            modelBuilder.Entity("FribergsCarRental.Data.Models.TheUser", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("TheUserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TheUserId"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -164,9 +159,9 @@ namespace FribergsCarRental.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId");
+                    b.HasKey("TheUserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("TheUsers");
                 });
 
             modelBuilder.Entity("FribergsCarRental.Data.Models.Booking", b =>
@@ -177,15 +172,7 @@ namespace FribergsCarRental.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FribergsCarRental.Data.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Car");
-
-                    b.Navigation("Customer");
                 });
 #pragma warning restore 612, 618
         }

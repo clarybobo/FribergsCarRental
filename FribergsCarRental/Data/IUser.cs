@@ -7,10 +7,11 @@ namespace FribergsCarRental.Data
         //Task<User> GetUserByEmailAsync(string email);
         //Task<User> GetUserByIdAsync(int id);
         //Task<User> AddUserAsync(User user);
-        Task<IEnumerable<User>> GetAllUsersAsync();
-        Task<User> GetUserByIdAsync(int? id);
-        Task<User> AddUserAsync(User user);
-        Task<User> EditUserAsync(User user, int id);
+        Task<IEnumerable<TheUser>> GetAllUsersAsync();
+        Task<TheUser> GetUserByIdAsync(int? id);
+        Task<TheUser> GetUserByEmailAsync(string email);
+        Task<TheUser> AddUserAsync(TheUser user);
+        Task<TheUser> EditUserAsync(TheUser user, int id);
         Task DeleteUserAsync(int? id);
     }
 }

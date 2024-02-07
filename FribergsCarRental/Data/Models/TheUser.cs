@@ -2,15 +2,17 @@
 
 namespace FribergsCarRental.Data.Models
 {
-    public class User
+    public class TheUser
     {
-        [Required]
-        public int UserId { get; set; }
-        [Required]
+       
+        public int TheUserId { get; set; }
+       
         public string FirstName { get; set; }
 
-        [Required]
+       
         public string LastName { get; set; }
+
+
         [Required]
         public string Email { get; set; }
         [Required]

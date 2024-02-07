@@ -19,23 +19,23 @@ namespace FribergsCarRental.Pages.Users
             _context = context;
         }
 
-      public User User { get; set; } = default!; 
+      public TheUser TheUser { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Users == null)
+            if (id == null || _context.TheUsers == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(m => m.UserId == id);
+            var user = await _context.TheUsers.FirstOrDefaultAsync(m => m.TheUserId == id);
             if (user == null)
             {
                 return NotFound();
             }
             else 
             {
-                User = user;
+                TheUser = user;
             }
             return Page();
         }

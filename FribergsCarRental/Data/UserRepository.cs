@@ -11,27 +11,27 @@ namespace FribergsCarRental.Data
         {
             this.applicationDbContext = applicationDbContext;
         }
-        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task<IEnumerable<TheUser>> GetAllUsersAsync()
         {
-            return await applicationDbContext.Users.OrderBy(u => u.UserId).ToListAsync();
+            return await applicationDbContext.TheUsers.OrderBy(u => u.TheUserId).ToListAsync();
         }
 
-        public async Task<User> GetUserByIdAsync(int? id)
+        public async Task<TheUser> GetUserByIdAsync(int? id)
         {
-            var user = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.TheUserId == id);
             return user;
         }
 
-        public async Task<User> AddUserAsync(User user)
+        public async Task<TheUser> AddUserAsync(TheUser user)
         {
-            applicationDbContext.Users.Add(user);
+            applicationDbContext.TheUsers.Add(user);
             await applicationDbContext.SaveChangesAsync();
             return user;
         }
 
         public async Task DeleteUserAsync(int? id)
         {
-            var user = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.TheUserId == id);
 
             if (user != null)
             {
@@ -40,9 +40,9 @@ namespace FribergsCarRental.Data
             }
         }
 
-        public async Task<User> EditUserAsync(User user, int id)
+        public async Task<TheUser> EditUserAsync(TheUser user, int id)
         {
-            var existingUser = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            var existingUser = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.TheUserId == id);
             if (existingUser != null)
             {
                 existingUser.FirstName = user.FirstName;
@@ -53,6 +53,12 @@ namespace FribergsCarRental.Data
                 return existingUser;
             }
             return null;
+        }
+
+        public async Task<TheUser> GetUserByEmailAsync(string email)
+        {
+            var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);
+            return user;
         }
         //public Task<User> AddUserAsync(User user)
         //{

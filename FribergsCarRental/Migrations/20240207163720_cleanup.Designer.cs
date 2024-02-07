@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FribergsCarRental.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240206183541_cleanup")]
+    [Migration("20240207163720_cleanup")]
     partial class cleanup
     {
         /// <inheritdoc />
@@ -65,9 +65,6 @@ namespace FribergsCarRental.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -80,8 +77,6 @@ namespace FribergsCarRental.Migrations
                     b.HasKey("BookingId");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Bookings");
                 });
@@ -140,6 +135,38 @@ namespace FribergsCarRental.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("FribergsCarRental.Data.Models.TheUser", b =>
+                {
+                    b.Property<int>("TheUserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TheUserId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TheUserId");
+
+                    b.ToTable("TheUsers");
+                });
+
             modelBuilder.Entity("FribergsCarRental.Data.Models.Booking", b =>
                 {
                     b.HasOne("FribergsCarRental.Data.Models.Car", "Car")
@@ -148,15 +175,7 @@ namespace FribergsCarRental.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FribergsCarRental.Data.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Car");
-
-                    b.Navigation("Customer");
                 });
 #pragma warning restore 612, 618
         }

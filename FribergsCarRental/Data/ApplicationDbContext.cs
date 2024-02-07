@@ -12,7 +12,7 @@ namespace FribergsCarRental.Data
 
         public DbSet<Booking> Bookings { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<TheUser> TheUsers { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
                 : base(options)
             {

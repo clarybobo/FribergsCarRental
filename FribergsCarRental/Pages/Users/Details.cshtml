@@ -12,39 +12,39 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.FirstName)
+            @Html.DisplayNameFor(model => model.TheUser.FirstName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.FirstName)
+            @Html.DisplayFor(model => model.TheUser.FirstName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.LastName)
+            @Html.DisplayNameFor(model => model.TheUser.LastName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.LastName)
+            @Html.DisplayFor(model => model.TheUser.LastName)
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.Email)
+            @Html.DisplayNameFor(model => model.TheUser.Email)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.Email)
+            @Html.DisplayFor(model => model.TheUser.Email)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.Password)
+            @Html.DisplayNameFor(model => model.TheUser.Password)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.Password)
+            @Html.DisplayFor(model => model.TheUser.Password)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.IsAdmin)
+            @Html.DisplayNameFor(model => model.TheUser.IsAdmin)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.IsAdmin)
+            @Html.DisplayFor(model => model.TheUser.IsAdmin)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="EditUser" asp-route-id="@Model.User?.UserId">Edit</a> |
+    <a asp-page="EditUser" asp-route-id="@Model.TheUser?.TheUserId">Edit</a> |
     <a asp-page="UserIndex">Back to List</a>
 </div>
