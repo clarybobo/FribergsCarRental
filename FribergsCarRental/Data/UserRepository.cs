@@ -1,4 +1,5 @@
 ﻿using FribergsCarRental.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FribergsCarRental.Data
 {
@@ -10,20 +11,62 @@ namespace FribergsCarRental.Data
         {
             this.applicationDbContext = applicationDbContext;
         }
-
-        public Task<User> AddUserAsync(User user)
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            return await applicationDbContext.Users.OrderBy(u => u.UserId).ToListAsync();
         }
 
-        public Task<User> GetUserByEmailAsync(string email)
+        public async Task<User> GetUserByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            var user = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            return user;
         }
 
-        public Task<User> GetUserByIdAsync(int id)
+        public async Task<User> AddUserAsync(User user)
         {
-            throw new NotImplementedException();
+            applicationDbContext.Users.Add(user);
+            await applicationDbContext.SaveChangesAsync();
+            return user;
         }
+
+        public async Task DeleteUserAsync(int? id)
+        {
+            var user = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (user != null)
+            {
+                applicationDbContext.Remove(user);
+                await applicationDbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<User> EditUserAsync(User user, int id)
+        {
+            var existingUser = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            if (existingUser != null)
+            {
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
+                existingUser.Email = user.Email;
+                existingUser.Password = user.Password;
+                await applicationDbContext.SaveChangesAsync();
+                return existingUser;
+            }
+            return null;
+        }
+        //public Task<User> AddUserAsync(User user)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<User> GetUserByEmailAsync(string email)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<User> GetUserByIdAsync(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
