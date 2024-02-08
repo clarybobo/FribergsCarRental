@@ -60,6 +60,8 @@ namespace FribergsCarRental.Data
             var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);
             return user;
         }
+
+   
         //public Task<User> AddUserAsync(User user)
         //{
         //    throw new NotImplementedException();

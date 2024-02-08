@@ -1,5 +1,7 @@
 using FribergsCarRental.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace FribergsBiluthyrning
 {
@@ -11,6 +13,7 @@ namespace FribergsBiluthyrning
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext") ?? throw new InvalidOperationException("Connection string 'RazorBiluthyrningContext' not found.")));
 
+  
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddTransient<ICar, CarRepository>();

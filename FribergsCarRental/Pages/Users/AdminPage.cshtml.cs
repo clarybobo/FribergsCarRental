@@ -16,11 +16,6 @@ namespace FribergsCarRental.Pages.Users
         private readonly ICar carRepository;
         private readonly IUser userRepository;
 
-        //private readonly IUser userRepository;
-        //public AdminPageModel(IUser userRepository)
-        //{
-        //    this.userRepository = userRepository;
-        //}
         public AdminPageModel(ICar carRepository, IUser userRepository)
         {
             this.carRepository = carRepository;

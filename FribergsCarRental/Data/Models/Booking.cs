@@ -4,6 +4,7 @@
     {
         public int BookingId { get; set; }
         public Car Car { get; set; }
+        public TheUser TheUser { get; set; }
         //public Customer Customer { get; set; }
         //public User Customer { get; set; }
         public DateTime StartDate { get; set; }

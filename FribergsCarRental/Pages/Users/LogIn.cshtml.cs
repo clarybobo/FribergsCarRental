@@ -34,15 +34,13 @@ namespace FribergsCarRental.Pages.Users
 
                 if (user != null && user.Password == TheUser.Password)
                 {
-                    // Authentication successful
-                    // Redirect user to appropriate page based on their role
                     if (user.IsAdmin)
                     {
-                        return RedirectToPage("/Users/AdminPage"); // Admin dashboard page
+                        return RedirectToPage("/Users/AdminPage"); 
                     }
                     else
                     {
-                        return RedirectToPage("/Users/UserIndex"); // User dashboard page
+                        return RedirectToPage("/Users/CustomerPage"); 
                     }
                 }
                 else

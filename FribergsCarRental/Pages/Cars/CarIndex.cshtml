@@ -4,10 +4,92 @@
 @{
     ViewData["Title"] = "CarIndex";
 }
+<h1>CarIndex</h1>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].PictureURL)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Car)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PictureURL)
+                    </td>                 
+                    <td>
+                        <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
+                        <a asp-page="Details" asp-route-id="@item.CarId">Details</a> |
+                        <a asp-page="DeleteCar" asp-route-id="@item.CarId">Delete</a> |
+                    </td>         
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="/Users/AdminPage">Tillbaka</a>
+}
+@* 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].PictureURL)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Car)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PictureURL)
+                    </td>
+                    <td>
+                        <a asp-page="Booking" asp-route-id="@item.CarId">Boka</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="/Users/CustomerPage">Tillbaka</a>
+}
+} *@
+
+@* 
 <h1>CarIndex</h1>
 <p>
-    @if (Model.TheUser == "Admin")
+    @if (Model.TheUser.Any(u => u.IsAdmin))
     {
         <a asp-page="CreateCar">Create New</a>
     }
@@ -41,13 +123,23 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PictureURL)
                 </td>
-                <td>
-                    <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
+                @if (Model.TheUser.Any(u => u.IsAdmin))
+                {
+                    <td>
+                        <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
                     <a asp-page="Details" asp-route-id="@item.CarId">Details</a> |
                     <a asp-page="DeleteCar" asp-route-id="@item.CarId">Delete</a> |
-                </td>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-page="Booking" asp-route-id="@item.CarId">Boka</a>
+                    </td>
+                }               
+
             </tr>
         }
     </tbody>     
 </table>
-<a asp-page="/Users/AdminPage">Tillbaka</a> 
+<a asp-page="/Users/AdminPage">Tillbaka</a>  *@
