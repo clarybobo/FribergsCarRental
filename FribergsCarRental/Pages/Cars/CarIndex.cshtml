@@ -6,10 +6,13 @@
 }
 
 <h1>CarIndex</h1>
-
 <p>
-    <a asp-page="CreateCar">Create New</a>
+    @if (Model.TheUser == "Admin")
+    {
+        <a asp-page="CreateCar">Create New</a>
+    }
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -26,23 +29,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Car) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PictureURL)
-            </td>
-            <td>
-                <a asp-page="./EditCar" asp-route-id="@item.CarId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CarId">Details</a> |
-                <a asp-page="./DeleteCar" asp-route-id="@item.CarId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+        @foreach (var item in Model.Car)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PictureURL)
+                </td>
+                <td>
+                    <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
+                    <a asp-page="Details" asp-route-id="@item.CarId">Details</a> |
+                    <a asp-page="DeleteCar" asp-route-id="@item.CarId">Delete</a> |
+                </td>
+            </tr>
+        }
+    </tbody>     
 </table>
+<a asp-page="/Users/AdminPage">Tillbaka</a> 

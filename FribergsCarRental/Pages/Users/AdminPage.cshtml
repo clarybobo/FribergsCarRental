@@ -5,56 +5,9 @@
     ViewData["Title"] = "AdminPage";
 }
 
-<h1>AdminPage</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TheUser[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TheUser[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TheUser[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TheUser[0].Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TheUser[0].IsAdmin)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.TheUser) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAdmin)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.TheUserId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TheUserId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TheUserId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<h1>Welcome Admin!</h1>
+<div>
+<a asp-page="/Cars/CarIndex" asp-page-handler="OnGetCars">Bilar</a> |
+<a asp-page="/Users/UserIndex" asp-page-handler="OnGetUsers">Kunder</a> |
+@* <a asp-page="/Bookings/BookingIndex">Bokningar</a> *@
+</div>

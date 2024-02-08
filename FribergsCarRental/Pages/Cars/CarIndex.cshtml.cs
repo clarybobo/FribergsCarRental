@@ -13,10 +13,12 @@ namespace FribergsCarRental.Pages.Cars
     public class CarIndexModel : PageModel
     {
         private readonly ICar carRepository;
+        private readonly IUser userRepository;
 
-        public CarIndexModel(ICar carRepository)
+        public CarIndexModel(ICar carRepository, IUser userRepository)
         {
             this.carRepository = carRepository;
+            this.userRepository = userRepository;
         }
 
         public IList<Car> Car { get; set; } = default!;
@@ -26,5 +28,4 @@ namespace FribergsCarRental.Pages.Cars
             Car = (await carRepository.GetAllCarsAsync()).ToList();
         }
     }
-
 }

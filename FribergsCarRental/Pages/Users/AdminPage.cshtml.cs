@@ -7,26 +7,45 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FribergsCarRental.Data;
 using FribergsCarRental.Data.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FribergsCarRental.Pages.Users
 {
     public class AdminPageModel : PageModel
     {
-        private readonly FribergsCarRental.Data.ApplicationDbContext _context;
+        private readonly ICar carRepository;
+        private readonly IUser userRepository;
 
-        public AdminPageModel(FribergsCarRental.Data.ApplicationDbContext context)
+        //private readonly IUser userRepository;
+        //public AdminPageModel(IUser userRepository)
+        //{
+        //    this.userRepository = userRepository;
+        //}
+        public AdminPageModel(ICar carRepository, IUser userRepository)
         {
-            _context = context;
+            this.carRepository = carRepository;
+            this.userRepository = userRepository;
         }
 
-        public IList<TheUser> TheUser { get;set; } = default!;
+        public IList<Car> Cars { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public IActionResult OnGet()
         {
-            if (_context.TheUsers != null)
-            {
-                TheUser = await _context.TheUsers.ToListAsync();
-            }
+           return Page(); 
         }
+        public IActionResult OnGetCars()
+        {
+            return  RedirectToPage("/Cars/CarIndex");
+        }
+
+        public IActionResult OnGetUsers()
+        {
+            return RedirectToPage("/Users/UserIndex");
+        }
+
+        //public IActionResult OnGetBookings()
+        //{
+        //    return RedirectToPage("/Bookings/BookingIndex");
+        //}
     }
 }

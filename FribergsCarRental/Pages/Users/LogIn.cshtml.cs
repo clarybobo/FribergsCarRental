@@ -38,7 +38,7 @@ namespace FribergsCarRental.Pages.Users
                     // Redirect user to appropriate page based on their role
                     if (user.IsAdmin)
                     {
-                        return RedirectToPage("/Users/UserIndex"); // Admin dashboard page
+                        return RedirectToPage("/Users/AdminPage"); // Admin dashboard page
                     }
                     else
                     {

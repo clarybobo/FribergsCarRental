@@ -5,10 +5,10 @@
     ViewData["Title"] = "UserIndex";
 }
 
-<h1>Index</h1>
+<h1>Kunder</h1>
 
 <p>
-    <a asp-page="CreateUser">Create New</a>
+    <a asp-page="CreateUser">Lägg till kund</a>
 </p>
 <table class="table">
     <thead>
@@ -51,11 +51,13 @@
                 @Html.DisplayFor(modelItem => item.IsAdmin)
             </td>
             <td>
-                <a asp-page="EditUser" asp-route-id="@item.TheUserId">Edit</a> |
+                <a asp-page="EditUser" asp-route-id="@item.TheUserId">Ändra</a> |
                 <a asp-page="Details" asp-route-id="@item.TheUserId">Details</a> |
-                <a asp-page="DeleteUser" asp-route-id="@item.TheUserId">Delete</a>
+                <a asp-page="DeleteUser" asp-route-id="@item.TheUserId">Ta bort</a>
             </td>
         </tr>
-}
+}       
     </tbody>
+
 </table>
+<a asp-page="AdminPage">Tillbaka</a>
