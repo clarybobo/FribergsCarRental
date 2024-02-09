@@ -34,7 +34,7 @@ namespace FribergsCarRental.Data
                 .Include(b => b.Car)
                 .Include(b => b.TheUser)
                 .FirstOrDefaultAsync(c => c.BookingId == id);
-            return booking; 
+            return booking;
 
         }
         public async Task<Booking> AddBookingAsync(Booking booking)

@@ -12,7 +12,7 @@ namespace FribergsBiluthyrning
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext") ?? throw new InvalidOperationException("Connection string 'RazorBiluthyrningContext' not found.")));
-
+                     
   
             // Add services to the container.
             builder.Services.AddRazorPages();
@@ -21,6 +21,7 @@ namespace FribergsBiluthyrning
             builder.Services.AddTransient<IAdmin, AdminRepository>();
             builder.Services.AddTransient<IBooking, BookingRepository>();
             builder.Services.AddTransient<IUser, UserRepository>();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
             var app = builder.Build();

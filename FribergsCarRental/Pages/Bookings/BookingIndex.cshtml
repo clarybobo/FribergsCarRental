@@ -24,10 +24,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Price)
-            </th>
+            </th>     
             <th></th>
         </tr>
     </thead>
@@ -46,17 +43,14 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
+                </td>            
 
-                @if (Model.TheUser.Any(u => u.IsAdmin))
+           @*      @if (Model.TheUser.Any(u => u.IsAdmin))
                 {
                     <td>
                         <a asp-page="/Bookings/DeleteBooking" asp-route-id="@item.BookingId">Ta bort</a> |
                     </td>
-                }
+                } *@
             </tr>
         }
     </tbody>

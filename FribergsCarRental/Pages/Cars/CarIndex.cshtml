@@ -34,8 +34,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.PictureURL)
                     </td>
-               
-                    @if (Model.TheUser.Any(u => u.IsAdmin))
+                <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
+                @if (Model.TheUser.Any(u => u.IsAdmin))
                     {
                     <td>
                         <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |

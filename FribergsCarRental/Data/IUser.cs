@@ -13,7 +13,8 @@ namespace FribergsCarRental.Data
         Task<TheUser> AddUserAsync(TheUser user);
         Task<TheUser> EditUserAsync(TheUser user, int id);
         Task DeleteUserAsync(int? id);
-      
-      
+        Task<int> GetLoggedInUserIdAsync(string email);
+
+
     }
 }
