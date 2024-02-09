@@ -17,39 +17,60 @@ namespace FribergsCarRental.Pages.Users
 
         public LogInModel(IUser userRepository)
         {
-            this.userRepository = userRepository;            
+            this.userRepository = userRepository;
         }
-       
-            [BindProperty]
-            public TheUser TheUser { get; set; }
 
-            public IActionResult OnGet()
+        [BindProperty]
+        public TheUser TheUser { get; set; }
+
+        //public async Task<IActionResult> OnGet(string email)
+        //{
+        //    if (email == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var user = await userRepository.GetUserByEmailAsync(email);
+
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    TheUser = user;
+        //    return Page();
+        //}
+
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
+
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var user = await userRepository.GetUserByEmailAsync(TheUser.Email);
+
+            if (user != null && user.Password == TheUser.Password)
             {
-                return Page();
-            }
-
-            public async Task<IActionResult> OnPostAsync()
-            {
-                var user = await userRepository.GetUserByEmailAsync(TheUser.Email);
-
-                if (user != null && user.Password == TheUser.Password)
+                if (user.IsAdmin)
                 {
-                    if (user.IsAdmin)
-                    {
-                        return RedirectToPage("/Users/AdminPage"); 
-                    }
-                    else
-                    {
-                        return RedirectToPage("/Users/CustomerPage"); 
-                    }
+
+                    return RedirectToPage("/Users/AdminPage");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid email or password");
-                    return Page();
+
+                    return RedirectToPage("/Users/CustomerPage");
                 }
             }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid email or password");
+                return Page();
+            }
         }
-
-       
     }
+
+
+}

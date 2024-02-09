@@ -6,13 +6,19 @@
 }
 
 <h1>BookingIndex</h1>
-
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="/Bookings/CreateBooking">Skapa bokning</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].TheUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Car)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].StartDate)
             </th>
@@ -26,23 +32,75 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Booking) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.BookingId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Booking)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TheUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                @if (Model.TheUser.Any(u => u.IsAdmin))
+                {
+                    <td>
+                        <a asp-page="/Bookings/DeleteBooking" asp-route-id="@item.BookingId">Ta bort</a> |
+                    </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>
+
+@*
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="TheUser.TheUserId" type="hidden" />
+            <input asp-for="Car.CarId" type="hidden" />
+            <div class="form-group">
+                <label asp-for="Car.Brand" class="control-label"></label>
+                <input asp-for="Car.Brand" class="form-control" />
+                <span asp-validation-for="Car.Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Model" class="control-label"></label>
+                <input asp-for="Car.Model" class="form-control" />
+                <span asp-validation-for="Car.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.PictureURL" class="control-label"></label>
+                <input asp-for="Car.PictureURL" class="form-control" />
+                <span asp-validation-for="Car.PictureURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Bookings/BookingIndex">Tillbaka</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+
+
+
+

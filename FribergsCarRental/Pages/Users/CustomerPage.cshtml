@@ -9,7 +9,10 @@
 <h1>Welcome!</h1>
  <table class="table">
         <thead>
-            <tr>
+            <tr>          
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Car[0].Brand)
                 </th>
@@ -36,7 +39,7 @@
                         @Html.DisplayFor(modelItem => item.PictureURL)
                     </td>
                     <td>
-                        <a asp-page="Booking" asp-route-id="@item.CarId">Boka</a>
+                        <a asp-page="/Bookings/BookingIndex" asp-route-id="@item.CarId">Boka</a>
                     </td>
                 </tr>
             }

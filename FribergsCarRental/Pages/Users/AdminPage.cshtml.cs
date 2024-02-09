@@ -38,9 +38,9 @@ namespace FribergsCarRental.Pages.Users
             return RedirectToPage("/Users/UserIndex");
         }
 
-        //public IActionResult OnGetBookings()
-        //{
-        //    return RedirectToPage("/Bookings/BookingIndex");
-        //}
+        public IActionResult OnGetBookings()
+        {
+            return RedirectToPage("/Bookings/BookingIndex");
+        }
     }
 }

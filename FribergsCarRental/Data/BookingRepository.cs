@@ -12,7 +12,7 @@ namespace FribergsCarRental.Data
             this.applicationDbContext = applicationDbContext;
         }
 
-        public async Task DeleteBookingsAsync(int id)
+        public async Task DeleteBookingAsync(int id)
         {
             var existingBooking = await applicationDbContext.Bookings.FindAsync(id);
             if (existingBooking != null)
@@ -27,33 +27,22 @@ namespace FribergsCarRental.Data
             return await applicationDbContext.Bookings.OrderBy(c => c.BookingId).ToListAsync();
         }
 
-        //public async Task DeleteBookingAsync(int id)
-        //{
-        //    var existingBooking = await applicationDbContext.Bookings.FindAsync(id);
-        //    if (existingBooking != null)
-        //    {
-        //        applicationDbContext.Bookings.Remove(existingBooking);
-        //        await applicationDbContext.SaveChangesAsync();
-        //    }
-        //}
 
+        public async Task<Booking> GetBookingByIdAsync(int id)
+        {
+            var booking = await applicationDbContext.Bookings
+                .Include(b => b.Car)
+                .Include(b => b.TheUser)
+                .FirstOrDefaultAsync(c => c.BookingId == id);
+            return booking; 
 
-        //public async Task<IEnumerable<Booking>> GetAllBookingAsync()
-        //{
-        //    return await applicationDbContext.Bookings.OrderBy(c => c.BookingId).ToListAsync();
-        //}
-
-
-        //public async Task<Booking> GetBookingByIdAsync(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public async Task<Booking> AddBookingAsync(Booking booking)
-        //{
-        //    applicationDbContext.Bookings.Add(booking);
-        //    await applicationDbContext.SaveChangesAsync();
-        //    return booking;
-        //}
+        }
+        public async Task<Booking> AddBookingAsync(Booking booking)
+        {
+            applicationDbContext.Bookings.Add(booking);
+            await applicationDbContext.SaveChangesAsync();
+            return booking;
+        }
 
         //public async Task<Booking> EditBookingAsync(Booking booking, int id)
         //{
