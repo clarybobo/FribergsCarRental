@@ -8,39 +8,84 @@ using Microsoft.EntityFrameworkCore;
 using FribergsCarRental.Data;
 using FribergsCarRental.Data.Models;
 using Microsoft.CodeAnalysis.Options;
+using Microsoft.AspNetCore.Http;
 
 namespace FribergsCarRental.Pages.Bookings
 {
-    public class BookingIndexModel : PageModel
+
+    namespace FribergsCarRental.Pages.Bookings
     {
-        private readonly IBooking bookingRepository;
-        private readonly IUser userRepository;
-        private readonly ICar carRepository;
-
-        public BookingIndexModel(IBooking bookingRepository, IUser userRepository, ICar carRepository)
+        public class BookingIndexModel : PageModel
         {
-            this.bookingRepository = bookingRepository;
-            this.userRepository = userRepository;
-            this.carRepository = carRepository;
-        }
+            private readonly IBooking bookingRepository;
+            private readonly IUser userRepository;
+            private readonly ICar carRepository;
 
-        public IList<Booking> Booking { get; set; } = default!;
-        public TheUser TheUser { get; set; }
-        public Car Car { get; set; }
-       
+            public BookingIndexModel(IBooking bookingRepository, IUser userRepository, ICar carRepository)
+            {
+                this.bookingRepository = bookingRepository;
+                this.userRepository = userRepository;
+                this.carRepository = carRepository;
+            }
 
-        public async Task OnGetAsync()
-        {
-            Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
-       
+            public IList<Booking> Booking { get; set; } = default!;
+            public TheUser TheUser { get; set; }
+            public Car Car { get; set; }
+
+
+            public async Task OnGetAsync()
+            {
+                Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
+
+            }
         }
     }
+
+
+
+    //public async Task<IActionResult> OnGetCreateBooking(int id)
+    //{
+    //    CarId = id;
+    //    Car = await carRepository.GetCarByIdAsync(CarId);
+    //    return Page();
+    //}
+
+    ////[BindProperty]
+    ////public Booking Booking { get; set; } = default!;
+    ////public Car Car { get; set; }
+    //public int CarId { get; set; }
+
+    //public IList<Car> Cars { get; set; } = default!;
+
+    //public IList<TheUser> TheUsers { get; set; } = default!;
+
+
+    //// To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+
+    //public async Task<IActionResult> OnPostCreateBookingAsync(int id)
+    //{
+    //    CarId = id;
+    //    Car = await carRepository.GetCarByIdAsync(CarId);
+    //    CurrentBooking.Car = Car;
+    //    if (int.TryParse(httpContextAccessor.HttpContext.Request.Cookies["userCookie"], out int userId))
+    //    {
+    //        var loggedInUser = await userRepository.GetUserByIdAsync(userId);
+    //        CurrentBooking.TheUser = loggedInUser;
+    //    }
+
+    //    var booking = await bookingRepository.AddBookingAsync(CurrentBooking);
+    //    CurrentBooking = booking;
+
+
+    //    return RedirectToPage("/Bookings/BookingIndex");
+    //}
 }
 
 
-    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-    //public async Task<IActionResult> OnPostAsync()
-    //{
+
+// To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+//public async Task<IActionResult> OnPostAsync()
+//{
 
 //        if (!ModelState.IsValid || Car == null)
 //        {
@@ -52,7 +97,7 @@ namespace FribergsCarRental.Pages.Bookings
 
 //return RedirectToPage("CarIndex");
 //}
-    
+
 
 
 //        public async Task OnGetBookingsAsync()
