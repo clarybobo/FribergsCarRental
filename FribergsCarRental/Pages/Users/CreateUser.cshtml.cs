@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FribergsCarRental.Data;
 using FribergsCarRental.Data.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FribergsCarRental.Pages.Users
 {
     public class CreateModel : PageModel
     {
         private readonly IUser userRepository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CreateModel(IUser userRepository)
+        public CreateModel(IUser userRepository, IHttpContextAccessor httpContextAccessor)
         {
             this.userRepository = userRepository;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult OnGet()
@@ -39,7 +42,27 @@ namespace FribergsCarRental.Pages.Users
 
             TheUser = user;
 
-            return RedirectToPage("/Users/CustomerPage");
+
+
+
+     
+            var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+            string userCookie = userId.ToString();
+
+            CookieOptions options = new CookieOptions();
+            
+                if (user.IsAdmin)
+                {
+                    httpContextAccessor.HttpContext.Response.Cookies.Append("userCookie", userCookie, options);
+                    return RedirectToPage("/Users/AdminPage");
+                }
+                else
+                {
+                    httpContextAccessor.HttpContext.Response.Cookies.Append("userCookie", userCookie, options);
+                    return RedirectToPage("/Users/CustomerPage");
+                }
+
+              
         }
     }
 }
