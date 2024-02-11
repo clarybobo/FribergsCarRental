@@ -25,24 +25,6 @@ namespace FribergsCarRental.Pages.Users
         [BindProperty]
         public TheUser TheUser { get; set; }
 
-        //public async Task<IActionResult> OnGet(string email)
-        //{
-        //    if (email == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var user = await userRepository.GetUserByEmailAsync(email);
-
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    TheUser = user;
-        //    return Page();
-        //}
-
         public IActionResult OnGet()
         {
             return Page();

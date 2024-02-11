@@ -39,7 +39,7 @@ namespace FribergsCarRental.Pages.Users
 
             TheUser = user;
 
-            return RedirectToPage("UserIndex");
+            return RedirectToPage("/Users/CustomerPage");
         }
     }
 }
