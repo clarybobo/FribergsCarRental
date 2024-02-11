@@ -22,12 +22,14 @@ namespace FribergsCarRental.Pages.Cars
         }
 
         public IList<Car> Car { get; set; } = default!;
-        public IList<TheUser> TheUser { get; set; } = default!;
+        //public IList<TheUser> TheUsers { get; set; } = default!;
+
+        public TheUser TheUser { get; set; }
 
         public async Task OnGetAsync()
         {
             Car = (await carRepository.GetAllCarsAsync()).ToList();
-            TheUser = (await userRepository.GetAllUsersAsync()).ToList();
+            //TheUsers = (await userRepository.GetAllUsersAsync()).ToList();
         }
     }
 }

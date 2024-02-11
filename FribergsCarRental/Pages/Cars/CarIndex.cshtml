@@ -6,56 +6,59 @@
 }
 <h1>Bilar</h1>
 
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].PictureURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Car)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Car[0].Brand)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Car[0].Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Car[0].PictureURL)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Car)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Brand)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PictureURL)
-                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PictureURL)
+                </td>
                 @* <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a> *@
-                @if (Model.TheUser.Any(u => u.IsAdmin))
-                    {
-                    <td>
-                        <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
-                        <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
-                        <a asp-page="Details" asp-route-id="@item.CarId">Details</a> |
-                        <a asp-page="DeleteCar" asp-route-id="@item.CarId">Delete</a> |
-                    </td>         
-                    }
-                </tr>
-                
-            }
+                @*       @if (Model.TheUsers.Any(u => u.IsAdmin)) *@
+               @*  <td> *@
+                   @*  <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a> *@
+               @*      <a asp-page="/Users/Login" asp-route-id="@item.CarId">Boka</a>
+                </td> *@
+              @*   <td>
+                     <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
+                    <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
+                    <a asp-page="Details" asp-route-id="@item.CarId">Details</a> |
+                    <a asp-page="DeleteCar" asp-route-id="@item.CarId">Delete</a> |
+                </td> *@
+            </tr>
 
-        </tbody>
-    </table>
+        }
 
-@if (Model.TheUser.Any(u => u.IsAdmin))
+    </tbody>
+</table>
+
+
+
+@* @if (Model.TheUser.Any(u => u.IsAdmin))
 {
     <a asp-page="/Users/AdminPage">Tillbaka</a>
-}
+} *@
 
 
 
-  

@@ -27,7 +27,7 @@ namespace FribergsCarRental.Pages.Users
         public async Task OnGetAsync()
         {
             Car = (await carRepository.GetAllCarsAsync()).ToList();
-            TheUser = (await userRepository.GetAllUsersAsync()).ToList();
+            TheUser = (await userRepository.GetAllUsersAsync()).ToList();          
         }
 
     }
