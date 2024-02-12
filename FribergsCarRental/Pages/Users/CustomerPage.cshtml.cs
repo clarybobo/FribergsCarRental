@@ -14,38 +14,77 @@ namespace FribergsCarRental.Pages.Users
     {
         //private readonly ICar carRepository;
         //private readonly IUser userRepository;
-        private readonly IHttpContextAccessor httpContextAccessor;
+        //private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CustomerPageModel(/*ICar carRepository, IUser userRepository, */IHttpContextAccessor httpContextAccessor)
-        {
-            //this.carRepository = carRepository;
-            //this.userRepository = userRepository;
-            this.httpContextAccessor = httpContextAccessor;
-        }
-
-        public IList<Car> Car { get; set; } = default!;
-        //public IList<TheUser> TheUser { get; set; } = default!;
-        [BindProperty]
-        public TheUser TheUser { get; set; }
-
-        public string UserFirstName { get; set; }
-
-        public void OnGet()
-        {
-            UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
-        }
-
-
-
-        //public async Task OnGetAsync()
+        //public CustomerPageModel(/*ICar carRepository, IUser userRepository, */IHttpContextAccessor httpContextAccessor)
         //{
-        //    //Car = (await carRepository.GetAllCarsAsync()).ToList();
-        //    ////TheUser = (await userRepository.GetAllUsersAsync()).ToList();   
-        //    Page();
-           
+        //    //this.carRepository = carRepository;
+        //    //this.userRepository = userRepository;
+        //    this.httpContextAccessor = httpContextAccessor;
         //}
 
+        //public IList<Car> Car { get; set; } = default!;
+        //public IList<TheUser> TheUser { get; set; } = default!;
+        //[BindProperty]
+        //public TheUser TheUser { get; set; }
+
+        //public string UserFirstName { get; set; }
+
+        //public void OnGet()
+        //{        
+        //    UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
+        //}
+
+            private readonly IBooking bookingRepository;
+            private readonly IHttpContextAccessor httpContextAccessor;
+
+            //private readonly IUser userRepository;
+            //private readonly ICar carRepository;
+
+            public CustomerPageModel(IBooking bookingRepository, IHttpContextAccessor httpContextAccessor /*IUser userRepository, ICar carRepository*/)
+            {
+                this.bookingRepository = bookingRepository;
+                this.httpContextAccessor = httpContextAccessor;
+                //this.userRepository = userRepository;
+                //this.carRepository = carRepository;
+            }
+
+            public IList<Booking> Booking { get; set; } = default!;
+            //public TheUser TheUser { get; set; }
+            //public Car Car { get; set; }
+            [BindProperty]
+            public string UserFirstName { get; set; }
+
+
+            public async Task OnGetAsync()
+            {
+                Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
+                UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
+            }
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //public async Task OnGetAsync()
+    //{
+    //    //Car = (await carRepository.GetAllCarsAsync()).ToList();
+    //    ////TheUser = (await userRepository.GetAllUsersAsync()).ToList();   
+    //    Page();
+
+    //}
+
+
     //{
     //    private readonly ICar carRepository;
     //    private readonly IUser userRepository;
@@ -73,5 +112,5 @@ namespace FribergsCarRental.Pages.Users
     //    {
     //        return RedirectToPage("/Users/UserIndex");
     //    }
-}
+
 

@@ -8,13 +8,63 @@
 
 <h1>Välkommen @Model.UserFirstName! </h1>
 <a asp-page="/Users/CustomerCarIndex">Välj och boka en bil</a>
-@* Lista över bokningar 
-    
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Car)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].TheUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Booking)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.Brand)
+                    @Html.DisplayFor(modelItem => item.Car.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TheUser.FirstName)
+                    @Html.DisplayFor(modelItem => item.TheUser.LastName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+@* Lista över bokningar
+
 *@
 
 @*  <table class="table">
         <thead>
-            <tr>          
+            <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Car[0].Model)
             </th>
@@ -54,6 +104,6 @@
  *@
 @* <div>
 <a asp-page="/Cars/CarIndex" asp-page-handler="OnGetCars">Bilar</a> |
- <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetBookings">Bokningar</a> | 
- <a asp-page="/Bookings/BookingIndex">Bokningar</a> 
+ <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetBookings">Bokningar</a> |
+ <a asp-page="/Bookings/BookingIndex">Bokningar</a>
 </div> *@

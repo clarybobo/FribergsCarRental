@@ -43,12 +43,12 @@ namespace FribergsCarRental.Pages.Users
                 httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
                 if (user.IsAdmin)
                 {                    
-                    httpContextAccessor.HttpContext.Response.Cookies.Append("userCookie", userCookie, options);
+                    httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
                     return RedirectToPage("/Users/AdminPage");
                 }
                 else
                 {                    
-                    httpContextAccessor.HttpContext.Response.Cookies.Append("userCookie", userCookie, options);
+                    httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
                     return RedirectToPage("/Users/CustomerPage");
                 }
             }
