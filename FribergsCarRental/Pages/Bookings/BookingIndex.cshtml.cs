@@ -29,13 +29,12 @@ namespace FribergsCarRental.Pages.Bookings
             }
 
             public IList<Booking> Booking { get; set; } = default!;
-            public TheUser TheUser { get; set; }
-            public Car Car { get; set; }
-
+       
 
             public async Task OnGetAsync()
             {
                 Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
+               
 
             }
         }

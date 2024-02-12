@@ -13,6 +13,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].TheUser)
             </th>
+          @*   <th>
+                @Html.DisplayNameFor(model => model.Booking[0].TheUser.LastName)
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].Car)
             </th>
@@ -30,10 +33,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TheUser)
-                </td>
+                    @Html.DisplayFor(modelItem => item.TheUser.FirstName)
+                    @Html.DisplayFor(modelItem => item.TheUser.LastName)
+                </td>             
                 <td>
-                    @Html.DisplayFor(modelItem => item.Car)
+                    @Html.DisplayFor(modelItem => item.Car.Brand)
+                    @Html.DisplayFor(modelItem => item.Car.Model)
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)

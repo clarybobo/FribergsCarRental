@@ -24,7 +24,12 @@ namespace FribergsCarRental.Data
 
         public async Task<IEnumerable<Booking>> GetAllBookingAsync()
         {
-            return await applicationDbContext.Bookings.OrderBy(c => c.BookingId).ToListAsync();
+            return await applicationDbContext.Bookings
+             .Include(b => b.Car)
+                .Include(b => b.TheUser)
+                  .OrderBy(c => c.BookingId).ToListAsync();
+
+
         }
 
 
