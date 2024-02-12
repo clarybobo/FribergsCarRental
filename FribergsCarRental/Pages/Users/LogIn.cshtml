@@ -5,30 +5,6 @@
 }
 
 
-@* <h1>Login</h1>
-
-<form method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <input type="hidden" asp-for="TheUser.TheUserId" />
-    <input type="hidden" asp-for="TheUser.FirstName" />
-    <input type="hidden" asp-for="TheUser.LastName" />
-    <input type="hidden" asp-for="TheUser.IsAdmin" />
-    <div class="form-group">      
-        <label asp-for="TheUser.Email" class="control-label">Email</label>
-        <input asp-for="TheUser.Email" class="form-control" />
-        <span asp-validation-for="TheUser.Email" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="TheUser.Password" class="control-label">Password</label>
-        <input asp-for="TheUser.Password" type="password" class="form-control" />
-        <span asp-validation-for="TheUser.Password" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Logga in</button>
-</form> *@
-
-
 <h1>Logga in</h1>
 
 <form method="post">
@@ -36,9 +12,6 @@
 
     <div class="form-group">
      <input type="hidden" asp-for="TheUser.TheUserId" />
-@*         <input type="hidden" asp-for="TheUser.FirstName" />
-        <input type="hidden" asp-for="TheUser.LastName" />
-        <input type="hidden" asp-for="TheUser.IsAdmin" />  *@
         <label asp-for="TheUser.Email" class="control-label">Email</label>
         <input asp-for="TheUser.Email" class="form-control" />
         <span asp-validation-for="TheUser.Email" class="text-danger"></span>
@@ -55,3 +28,29 @@
 
         <h1>Skapa nytt konto</h1>
         <a asp-page="/Users/CreateUser">Skapa konto</a>
+
+
+       @*  @if(User.IsInRole("Admin"))
+{
+    <h1>Logga in</h1>
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="TheUser.TheUserId" />    
+            <label asp-for="TheUser.Email" class="control-label">Email</label>
+            <input asp-for="TheUser.Email" class="form-control" />
+            <span asp-validation-for="TheUser.Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TheUser.Password" class="control-label">Password</label>
+            <input asp-for="TheUser.Password" type="password" class="form-control" />
+            <span asp-validation-for="TheUser.Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Logga in</button>
+    </form>
+}
+ *@

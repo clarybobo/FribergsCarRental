@@ -12,14 +12,14 @@ namespace FribergsCarRental.Pages.Users
 {
     public class CustomerPageModel : PageModel
     {
-        private readonly ICar carRepository;
-        private readonly IUser userRepository;
+        //private readonly ICar carRepository;
+        //private readonly IUser userRepository;
         private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CustomerPageModel(ICar carRepository, IUser userRepository, IHttpContextAccessor httpContextAccessor)
+        public CustomerPageModel(/*ICar carRepository, IUser userRepository, */IHttpContextAccessor httpContextAccessor)
         {
-            this.carRepository = carRepository;
-            this.userRepository = userRepository;
+            //this.carRepository = carRepository;
+            //this.userRepository = userRepository;
             this.httpContextAccessor = httpContextAccessor;
         }
 

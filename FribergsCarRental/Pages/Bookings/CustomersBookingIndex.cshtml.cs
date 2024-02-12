@@ -15,19 +15,19 @@ namespace FribergsCarRental.Pages.Bookings
         public class CustomersBookingIndexModel : PageModel
         {
             private readonly IBooking bookingRepository;
-            private readonly IUser userRepository;
-            private readonly ICar carRepository;
+            //private readonly IUser userRepository;
+            //private readonly ICar carRepository;
 
-            public CustomersBookingIndexModel(IBooking bookingRepository, IUser userRepository, ICar carRepository)
+            public CustomersBookingIndexModel(IBooking bookingRepository /*IUser userRepository, ICar carRepository*/)
             {
                 this.bookingRepository = bookingRepository;
-                this.userRepository = userRepository;
-                this.carRepository = carRepository;
+                //this.userRepository = userRepository;
+                //this.carRepository = carRepository;
             }
 
             public IList<Booking> Booking { get; set; } = default!;
-            public TheUser TheUser { get; set; }
-            public Car Car { get; set; }
+            //public TheUser TheUser { get; set; }
+            //public Car Car { get; set; }
 
 
             public async Task OnGetAsync()

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Azure.Core;
+@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,6 +11,12 @@
     <link rel="stylesheet" href="~/FribergsCarRental.styles.css" asp-append-version="true" />
 </head>
 <body>
+    @{
+        var userCookie = Context.Request.Cookies["userCookie"];
+    }
+    
+
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -17,6 +25,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -26,14 +35,32 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga in</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Admin</a>
                         </li>
+                        @if (string.IsNullOrEmpty(userCookie))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga in/Skapa konto</a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(userCookie))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
+
             </div>
         </nav>
     </header>
-  
+
+
+
+
 
     <div class="container">
         <main role="main" class="pb-3">
