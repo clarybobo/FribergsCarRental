@@ -5,9 +5,171 @@
     ViewData["Title"] = "AdminPage";
 }
 
-<h1>Welcome Admin!</h1>
-<div>
+<h1>Välkommen Admin!</h1>
+
+
+
+
+<h2>Bokningar</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings[0].Car)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings[0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings[0].TheUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bookings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.Brand)
+                    @Html.DisplayFor(modelItem => item.Car.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TheUser.FirstName)
+                    @Html.DisplayFor(modelItem => item.TheUser.LastName)
+                </td>
+                <td>
+            <a asp-page="/Bookings/DeleteBooking" asp-route-id="@item.BookingId">Ta bort</a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+<h2>Kunder</h2>
+<p>
+    <a asp-page="/Users/CreateUser">Lägg till kund</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TheUsers[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheUsers[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheUsers[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheUsers[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheUsers[0].IsAdmin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model.TheUsers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAdmin)
+                </td>
+                <td>
+                    <a asp-page="/Users/EditUser" asp-route-id="@item.TheUserId">Ändra</a> |
+                    <a asp-page="/Users/Details" asp-route-id="@item.TheUserId">Details</a> |
+                    <a asp-page="/Users/DeleteUser" asp-route-id="@item.TheUserId">Ta bort</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+
+<h2>Bilar</h2>
+
+<p>
+    <a asp-page="/Cars/CreateCar">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cars[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cars[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cars[0].PictureURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cars)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PictureURL)
+                </td>
+                <td>
+                    <a asp-page="/Cars/EditCar" asp-route-id="@item.CarId">Edit</a> |
+                    <a asp-page="/Cars/Details" asp-route-id="@item.CarId">Details</a> |
+                    <a asp-page="/Cars/DeleteCar" asp-route-id="@item.CarId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+@* <div>
 <a asp-page="/Users/AdminCarIndex" asp-page-handler="OnGetCars">Bilar</a> |
 <a asp-page="/Users/UserIndex" asp-page-handler="OnGetUsers">Kunder</a> |
 <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetBookings">Bokningar</a>
-</div>
+</div> *@

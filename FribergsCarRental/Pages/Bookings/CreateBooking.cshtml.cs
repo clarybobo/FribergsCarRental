@@ -52,7 +52,7 @@ namespace FribergsCarRental.Pages.Bookings
                 CarId = id;
                 Car = await carRepository.GetCarByIdAsync(CarId);
                 Booking.Car = Car;
-                if (int.TryParse(httpContextAccessor.HttpContext.Request.Cookies["userCookie"], out int userId))
+                if (int.TryParse(httpContextAccessor.HttpContext.Request.Cookies["customerCookie"], out int userId))
                 {
                     var loggedInUser = await userRepository.GetUserByIdAsync(userId);
                     Booking.TheUser = loggedInUser;

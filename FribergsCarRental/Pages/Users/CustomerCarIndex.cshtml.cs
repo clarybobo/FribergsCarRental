@@ -13,22 +13,23 @@ namespace FribergsCarRental.Pages.Users
     public class CustomerCarIndexModel : PageModel
     {
         private readonly ICar carRepository;
-        
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CustomerCarIndexModel(ICar carRepository)
+        public CustomerCarIndexModel(ICar carRepository, IHttpContextAccessor httpContextAccessor)
         {
             this.carRepository = carRepository;
-         
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public IList<Car> Car { get; set; } = default!;
-        
+        public string CustomerCookie { get; set; }
 
-        public TheUser TheUser { get; set; }
+
 
         public async Task OnGetAsync()
         {
             Car = (await carRepository.GetAllCarsAsync()).ToList();
+            CustomerCookie = httpContextAccessor.HttpContext.Request.Cookies["userCookie"];
             //TheUsers = (await userRepository.GetAllUsersAsync()).ToList();
         }
     }

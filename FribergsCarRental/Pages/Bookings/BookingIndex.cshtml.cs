@@ -18,6 +18,7 @@ namespace FribergsCarRental.Pages.Bookings
         public class BookingIndexModel : PageModel
         {
             private readonly IBooking bookingRepository;
+
             //private readonly IUser userRepository;
             //private readonly ICar carRepository;
 

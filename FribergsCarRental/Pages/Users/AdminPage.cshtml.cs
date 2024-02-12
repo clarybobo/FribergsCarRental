@@ -13,39 +13,78 @@ namespace FribergsCarRental.Pages.Users
 {
     public class AdminPageModel : PageModel
     {
+
+
+        private readonly IBooking bookingRepository;
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IUser userRepository;
+        private readonly ICar carRepository;
 
-        //private readonly ICar carRepository;
-        //private readonly IUser userRepository;
-
-        public AdminPageModel(IHttpContextAccessor httpContextAccessor/*ICar carRepository, IUser userRepository*/)
+        public AdminPageModel(IBooking bookingRepository, IHttpContextAccessor httpContextAccessor, IUser userRepository, ICar carRepository)
         {
+            this.bookingRepository = bookingRepository;
             this.httpContextAccessor = httpContextAccessor;
-            //this.carRepository = carRepository;
-            //this.userRepository = userRepository;
+            this.userRepository = userRepository;
+            this.carRepository = carRepository;
         }
 
+        public IList<Booking> Bookings { get; set; } = default!;
+        public IList<TheUser> TheUsers { get; set; } = default!;
         public IList<Car> Cars { get; set; } = default!;
-        public string UserCookie { get; set; }
 
-        public IActionResult OnGet()
-        {
-            UserCookie = httpContextAccessor.HttpContext.Request.Cookies["userCookie"];
-            return Page(); 
-        }
-        public IActionResult OnGetCars()
-        {
-            return  RedirectToPage("/Users/UserCarIndex");
-        }
+        //public string AdminCookie { get; set; }
 
-        public IActionResult OnGetUsers()
+
+
+        public async Task OnGetAsync()
         {
-            return RedirectToPage("/Users/UserIndex");
+            Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();
+            TheUsers = (await userRepository.GetAllUsersAsync()).ToList();
+            Cars = (await carRepository.GetAllCarsAsync()).ToList();
+            //AdminCookie = httpContextAccessor.HttpContext.Request.Cookies["adminCookie"];
         }
 
-        public IActionResult OnGetBookings()
-        {
-            return RedirectToPage("/Bookings/BookingIndex");
-        }
+
+
+
+
+
     }
 }
+
+
+
+     //private readonly IHttpContextAccessor httpContextAccessor;
+
+     //   //private readonly ICar carRepository;
+     //   //private readonly IUser userRepository;
+
+     //   public AdminPageModel(IHttpContextAccessor httpContextAccessor/*ICar carRepository, IUser userRepository*/)
+     //   {
+     //       this.httpContextAccessor = httpContextAccessor;
+     //       //this.carRepository = carRepository;
+     //       //this.userRepository = userRepository;
+     //   }
+
+     //   public IList<Car> Cars { get; set; } = default!;
+     //   public string UserCookie { get; set; }
+
+//public IActionResult OnGet()
+//{
+//    UserCookie = httpContextAccessor.HttpContext.Request.Cookies["userCookie"];
+//    return Page(); 
+//}
+//public IActionResult OnGetCars()
+//{
+//    return  RedirectToPage("/Users/UserCarIndex");
+//}
+
+//public IActionResult OnGetUsers()
+//{
+//    return RedirectToPage("/Users/UserIndex");
+//}
+
+//public IActionResult OnGetBookings()
+//{
+//    return RedirectToPage("/Bookings/BookingIndex");
+//}
