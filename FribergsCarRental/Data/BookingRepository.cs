@@ -12,7 +12,7 @@ namespace FribergsCarRental.Data
             this.applicationDbContext = applicationDbContext;
         }
 
-        public async Task DeleteBookingAsync(int id)
+        public async Task DeleteBookingAsync(int? id)
         {
             var existingBooking = await applicationDbContext.Bookings.FindAsync(id);
             if (existingBooking != null)
@@ -33,7 +33,7 @@ namespace FribergsCarRental.Data
         }
 
 
-        public async Task<Booking> GetBookingByIdAsync(int id)
+        public async Task<Booking> GetBookingByIdAsync(int? id)
         {
             var booking = await applicationDbContext.Bookings
                 .Include(b => b.Car)

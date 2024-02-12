@@ -29,14 +29,52 @@ namespace FribergsCarRental.Pages.Bookings
             }
 
             public IList<Booking> Booking { get; set; } = default!;
-       
+            [BindProperty]
+            public int BookingId { get; set; }
+
 
             public async Task OnGetAsync()
             {
                 Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
-               
-
             }
+
+            public async Task<IActionResult> OnGetDeleteAsync(int? id)
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                await bookingRepository.DeleteBookingAsync(id);
+                return RedirectToPage();
+            }
+
+            //public async Task<IActionResult> OnGetDeleteAsync(int id)
+            //{
+            //    var booking = await bookingRepository.GetBookingByIdAsync(id);
+
+            //    if (booking == null)
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    BookingId = id;
+            //    return Page();
+            //}
+
+            //public async Task<IActionResult> OnPostDeleteAsync(int id)
+            //{
+            //    var booking = await bookingRepository.GetBookingByIdAsync(id);
+
+            //    if (booking == null)
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    await bookingRepository.DeleteBookingAsync(id);
+            //    return RedirectToPage("/Bookings/BookingIndex");
+            //}
+
         }
     }
 
