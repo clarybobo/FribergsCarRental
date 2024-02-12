@@ -14,21 +14,36 @@ namespace FribergsCarRental.Pages.Users
     {
         private readonly ICar carRepository;
         private readonly IUser userRepository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CustomerPageModel(ICar carRepository, IUser userRepository)
+        public CustomerPageModel(ICar carRepository, IUser userRepository, IHttpContextAccessor httpContextAccessor)
         {
             this.carRepository = carRepository;
             this.userRepository = userRepository;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public IList<Car> Car { get; set; } = default!;
-        public IList<TheUser> TheUser { get; set; } = default!;
+        //public IList<TheUser> TheUser { get; set; } = default!;
+        [BindProperty]
+        public TheUser TheUser { get; set; }
 
-        public async Task OnGetAsync()
+        public string UserFirstName { get; set; }
+
+        public void OnGet()
         {
-            Car = (await carRepository.GetAllCarsAsync()).ToList();
-            TheUser = (await userRepository.GetAllUsersAsync()).ToList();          
+            UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
         }
+
+
+
+        //public async Task OnGetAsync()
+        //{
+        //    //Car = (await carRepository.GetAllCarsAsync()).ToList();
+        //    ////TheUser = (await userRepository.GetAllUsersAsync()).ToList();   
+        //    Page();
+           
+        //}
 
     }
     //{

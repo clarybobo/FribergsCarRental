@@ -1,0 +1,48 @@
+﻿@page
+@model FribergsCarRental.Pages.Users.AdminCarIndexModel
+
+@{
+    ViewData["Title"] = "AdminCarIndex";
+}
+
+<h1>AdminCarIndex</h1>
+
+<p>
+    <a asp-page="/Cars/CreateCar">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].PictureURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Car) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PictureURL)
+            </td>
+            <td>
+                <a asp-page="/Cars/EditCar" asp-route-id="@item.CarId">Edit</a> |
+                <a asp-page="/Cars/Details" asp-route-id="@item.CarId">Details</a> |
+                <a asp-page="/Cars/DeleteCar" asp-route-id="@item.CarId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

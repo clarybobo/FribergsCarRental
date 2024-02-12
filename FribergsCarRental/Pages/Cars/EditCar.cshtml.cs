@@ -71,7 +71,7 @@ namespace FribergsCarRental.Pages.Cars
                 }
             }
 
-            return RedirectToPage("CarIndex");
+            return RedirectToPage("/Users/AdminCarIndex");
         }
     }
 }

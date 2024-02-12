@@ -49,7 +49,7 @@ namespace FribergsCarRental.Pages.Cars
             }
 
             await carRepository.DeleteCarAsync(id);
-            return RedirectToPage("CarIndex");
+            return RedirectToPage("/Users/AdminCarIndex");
         }
     }
 }

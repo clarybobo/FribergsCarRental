@@ -30,7 +30,7 @@ namespace FribergsCarRental.Pages.Users
         }
         public IActionResult OnGetCars()
         {
-            return  RedirectToPage("/Cars/CarIndex");
+            return  RedirectToPage("/Users/UserCarIndex");
         }
 
         public IActionResult OnGetUsers()

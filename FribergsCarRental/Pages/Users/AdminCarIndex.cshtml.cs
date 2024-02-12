@@ -8,26 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using FribergsCarRental.Data;
 using FribergsCarRental.Data.Models;
 
-namespace FribergsCarRental.Pages.Cars
+namespace FribergsCarRental.Pages.Users
 {
-    public class CarIndexModel : PageModel
+    public class AdminCarIndexModel : PageModel
     {
         private readonly ICar carRepository;
-     
 
-        public CarIndexModel(ICar carRepository)
+        public AdminCarIndexModel(ICar carRepository)
         {
             this.carRepository = carRepository;
-        
         }
 
         public IList<Car> Car { get; set; } = default!;
-  
+       
 
         public async Task OnGetAsync()
         {
-            Car = (await carRepository.GetAllCarsAsync()).ToList();
-
+          Car = (await carRepository.GetAllCarsAsync()).ToList();
         }
     }
 }

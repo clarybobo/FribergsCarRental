@@ -1,0 +1,44 @@
+﻿@page
+@model FribergsCarRental.Pages.Users.CustomerCarIndexModel
+
+@{
+    ViewData["Title"] = "CustomerCarIndex";
+}
+
+<h1>CustomerCarIndex</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].PictureURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Car) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PictureURL)
+            </td>
+            <td>
+                    <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

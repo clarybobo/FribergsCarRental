@@ -1,12 +1,15 @@
 ﻿@page
-@model FribergsCarRental.Pages.Bookings.BookingIndexModel
+@model FribergsCarRental.Pages.Bookings.CustomersBookingIndexModel
 
 @{
-    ViewData["Title"] = "BookingIndex";
+    ViewData["Title"] = "CustomersBookingIndex";
 }
 
-<h1>BookingIndex</h1>
+<h1>CustomersBookingIndex</h1>
 
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -52,14 +55,3 @@
         }
     </tbody>
 </table>
-
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
-
-
-
-

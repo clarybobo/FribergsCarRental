@@ -40,7 +40,7 @@ namespace FribergsCarRental.Pages.Cars
 
             Car = car;
 
-            return RedirectToPage("CarIndex");
+            return RedirectToPage("/Users/AdminCarIndex");
         }
     }
 }

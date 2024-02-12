@@ -34,18 +34,22 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PictureURL)
                 </td>
-                @* <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a> *@
+
                 @*       @if (Model.TheUsers.Any(u => u.IsAdmin)) *@
-               @*  <td> *@
-                   @*  <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a> *@
-               @*      <a asp-page="/Users/Login" asp-route-id="@item.CarId">Boka</a>
-                </td> *@
-              @*   <td>
-                     <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
+                @*  <td> *@
+                @*  <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a> *@
+                @*      <a asp-page="/Users/Login" asp-route-id="@item.CarId">Boka</a>
+            </td> *@
+                <td>
+                  @*   <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a> *@
+             @*      <a asp-page="/Users/Login">Logga in/Skapa konto för att boka</a> *@
+@* 
+                <td>
                     <a asp-page="EditCar" asp-route-id="@item.CarId">Edit</a> |
                     <a asp-page="Details" asp-route-id="@item.CarId">Details</a> |
                     <a asp-page="DeleteCar" asp-route-id="@item.CarId">Delete</a> |
                 </td> *@
+               
             </tr>
 
         }

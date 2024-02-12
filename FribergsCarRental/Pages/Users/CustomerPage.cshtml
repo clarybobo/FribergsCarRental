@@ -6,8 +6,13 @@
     ViewData["Title"] = "CustomerPage";
 }
 
-<h1>Welcome!</h1>
- <table class="table">
+<h1>Välkommen @Model.UserFirstName! </h1>
+<a asp-page="/Users/CustomerCarIndex">Välj och boka en bil</a>
+@* Lista över bokningar 
+    
+*@
+
+@*  <table class="table">
         <thead>
             <tr>          
             <th>
@@ -40,13 +45,13 @@
                     </td>
                     <td>
                         <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
-                  @*   <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetCreateBooking" asp-route-id="@item.CarId">Boka</a> *@
+                    <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetCreateBooking" asp-route-id="@item.CarId">Boka</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
+ *@
 @* <div>
 <a asp-page="/Cars/CarIndex" asp-page-handler="OnGetCars">Bilar</a> |
  <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetBookings">Bokningar</a> | 

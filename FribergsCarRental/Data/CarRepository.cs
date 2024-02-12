@@ -38,7 +38,7 @@ namespace FribergsCarRental.Data
             {
                 existingCar.Brand = car.Brand;
                 existingCar.Model = car.Model;
-                applicationDbContext.SaveChanges();
+                await applicationDbContext.SaveChangesAsync();
                 return existingCar;
             }
             return null;
