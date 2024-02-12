@@ -12,11 +12,10 @@
 </head>
 <body>
     @{
-        var userCookie = Context.Request.Cookies["userCookie"];
+        
         var adminCookie = Context.Request.Cookies["adminCookie"];
-        var customerCookie = Context.Request.Cookies["adminCookie"];
+        var customerCookie = Context.Request.Cookies["customerCookie"];
     }
-
 
 
     <header>
@@ -30,7 +29,38 @@
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (!string.IsNullOrEmpty(adminCookie))
+                        @*         @if (!string.IsNullOrEmpty(adminCookie))
+                        {
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Admin</a>
+                        </li>
+                        @if (string.IsNullOrEmpty(adminCookie))
+                        {
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
+                        </li>
+                        }
+                        } *@
+
+                        @if (!string.IsNullOrEmpty(customerCookie))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Customers/CustomerCarIndex">Bilar</a>
+                            </li>                       
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
+                            </li>
+                        }
+                        else if (!string.IsNullOrEmpty(adminCookie))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
@@ -39,40 +69,27 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Admin</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/AdminPage">Admin</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
                             </li>
+
                         }
 
-                        @if (!string.IsNullOrEmpty(customerCookie))
+                        else
+                        @*  @if (string.IsNullOrEmpty(customerCookie)) *@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/CustomerCarIndex">Bilar</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
-                            </li>
-
-                        }
-
-                        @if (string.IsNullOrEmpty(userCookie))
-                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga in/Skapa konto</a>
                             </li>
                         }
-
-                        @*      @if (!string.IsNullOrEmpty(userCookie))
-                        {
-                        <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
-                        </li>
-                        } *@
 
                     </ul>
                 </div>
@@ -80,9 +97,6 @@
             </div>
         </nav>
     </header>
-
-
-
 
 
     <div class="container">
