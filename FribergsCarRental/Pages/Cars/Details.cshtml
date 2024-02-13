@@ -35,3 +35,8 @@
     <a asp-page="./EditCar" asp-route-id="@Model.Car?.CarId">Edit</a> |
     <a asp-page="./CarIndex">Back to List</a>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

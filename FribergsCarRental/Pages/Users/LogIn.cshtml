@@ -29,3 +29,8 @@
         <h1>Skapa nytt konto</h1>
         <a asp-page="/Users/CreateUser">Skapa konto</a>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

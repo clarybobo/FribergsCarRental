@@ -34,3 +34,8 @@
     <a asp-page="/Users/CustomerPage">Tillbaka</a>
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

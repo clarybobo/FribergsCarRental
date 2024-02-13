@@ -47,3 +47,8 @@
     </tbody>
 </table>
 <a asp-page="/Users/AdminPage">Tillbaka</a>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -12,7 +12,7 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Bookings[0].TheUser)
-            </th> 
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Bookings[0].Car)
             </th>
@@ -32,7 +32,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.TheUser.FirstName)
                     @Html.DisplayFor(modelItem => item.TheUser.LastName)
-                </td>             
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Car.Brand)
                     @Html.DisplayFor(modelItem => item.Car.Model)
@@ -44,12 +44,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
-                    
-       @*      <td>
-                   
-            <a asp-page="/Bookings/BookingIndex" asp-page-handler="Delete" asp-route-id="@item.BookingId">Ta bort</a> |
-            </td>
-             *@
 
                 <td>
                     <form method="post" asp-page-handler="Delete" asp-route-id="@item.BookingId" onsubmit="return confirm('Är du säker på att du vill ta bort bokningen?');">
@@ -58,10 +52,9 @@
                 </td>
             </tr>
         }
-      
+
     </tbody>
 </table>
-
 
 
 @section Scripts {

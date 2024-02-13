@@ -48,3 +48,8 @@
     <a asp-page="EditUser" asp-route-id="@Model.TheUser?.TheUserId">Edit</a> |
     <a asp-page="UserIndex">Back to List</a>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
