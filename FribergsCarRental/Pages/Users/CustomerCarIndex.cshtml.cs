@@ -32,8 +32,7 @@ namespace FribergsCarRental.Pages.Users
         public async Task OnGetAsync()
         {
             Cars = (await carRepository.GetAllCarsAsync()).ToList();
-            CustomerCookie = httpContextAccessor.HttpContext.Request.Cookies["userCookie"];
-            //TheUsers = (await userRepository.GetAllUsersAsync()).ToList();
+            CustomerCookie = httpContextAccessor.HttpContext.Request.Cookies["userCookie"];          
         }
     }
 }

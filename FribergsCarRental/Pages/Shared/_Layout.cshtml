@@ -28,7 +28,8 @@
                 </button>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">                          
+                    <ul class="navbar-nav flex-grow-1">       
+                        
                         @if (!string.IsNullOrEmpty(customerCookie))
                         {
                             <li class="nav-item">
@@ -46,13 +47,7 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/AdminPage">Home</a>
-                            </li>
-                          @*   <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
-                            </li> *@
-                        @*     <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/AdminPage">Admin</a>
-                            </li> *@
+                            </li>                  
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
                             </li>

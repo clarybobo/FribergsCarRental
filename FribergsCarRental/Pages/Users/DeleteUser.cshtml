@@ -33,45 +33,11 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TheUser.Password)
-        </dd>
-        @*   <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.TheUser.IsAdmin)
-        </dt>
-        <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.TheUser.IsAdmin)
-        </dd> *@
+        </dd>       
     </dl>
 
     <form method="post">
         <input type="hidden" asp-for="TheUser.TheUserId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> 
-        @*     <a asp-page="UserIndex">Back to List</a> *@
     </form>
 </div>
-@*     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.Password)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User.IsAdmin)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.IsAdmin)
-        </dd>
-    </dl>
-
-    <form method="post">
-        <input type="hidden" asp-for="User.UserId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="UserIndex">Back to List</a>
-    </form>
-</div> *@

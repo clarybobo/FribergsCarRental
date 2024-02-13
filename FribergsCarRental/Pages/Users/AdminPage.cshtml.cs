@@ -52,39 +52,3 @@ namespace FribergsCarRental.Pages.Users
     }
 }
 
-
-
-     //private readonly IHttpContextAccessor httpContextAccessor;
-
-     //   //private readonly ICar carRepository;
-     //   //private readonly IUser userRepository;
-
-     //   public AdminPageModel(IHttpContextAccessor httpContextAccessor/*ICar carRepository, IUser userRepository*/)
-     //   {
-     //       this.httpContextAccessor = httpContextAccessor;
-     //       //this.carRepository = carRepository;
-     //       //this.userRepository = userRepository;
-     //   }
-
-     //   public IList<Car> Cars { get; set; } = default!;
-     //   public string UserCookie { get; set; }
-
-//public IActionResult OnGet()
-//{
-//    UserCookie = httpContextAccessor.HttpContext.Request.Cookies["userCookie"];
-//    return Page(); 
-//}
-//public IActionResult OnGetCars()
-//{
-//    return  RedirectToPage("/Users/UserCarIndex");
-//}
-
-//public IActionResult OnGetUsers()
-//{
-//    return RedirectToPage("/Users/UserIndex");
-//}
-
-//public IActionResult OnGetBookings()
-//{
-//    return RedirectToPage("/Bookings/BookingIndex");
-//}
