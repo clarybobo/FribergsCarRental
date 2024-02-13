@@ -18,7 +18,6 @@ namespace FribergsCarRental.Data.Models
 
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
-
-        //public int Price { get; set; }
+ 
     }
 }
