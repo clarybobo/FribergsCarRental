@@ -8,28 +8,27 @@
 
 <h1>Välkommen @Model.UserFirstName! </h1>
 
-<a asp-page="/Users/CustomerCarIndex">Välj och boka en bil</a>
-
+<h2>Dina bokningar: </h2>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Car)
+                @Html.DisplayNameFor(model => model.Bookings[0].Car)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+                @Html.DisplayNameFor(model => model.Bookings[0].StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Booking[0].EndDate)
+                @Html.DisplayNameFor(model => model.Bookings[0].EndDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Booking[0].TheUser)
+                @Html.DisplayNameFor(model => model.Bookings[0].TheUser)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Booking)
+        @foreach (var item in Model.Bookings)
         {
             <tr>
                 <td>
@@ -50,61 +49,6 @@
         }
     </tbody>
 </table>
+<a asp-page="/Users/CustomerCarIndex">Skapa ny bokning</a>
 
 
-
-
-
-
-
-
-
-@* Lista över bokningar
-
-*@
-
-@*  <table class="table">
-        <thead>
-            <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].Model)
-            </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Car[0].Brand)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Car[0].Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Car[0].PictureURL)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Car)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Brand)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PictureURL)
-                    </td>
-                    <td>
-                        <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
-                    <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetCreateBooking" asp-route-id="@item.CarId">Boka</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
- *@
-@* <div>
-<a asp-page="/Cars/CarIndex" asp-page-handler="OnGetCars">Bilar</a> |
- <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetBookings">Bokningar</a> |
- <a asp-page="/Bookings/BookingIndex">Bokningar</a>
-</div> *@

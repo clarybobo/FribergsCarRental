@@ -10,20 +10,20 @@ using FribergsCarRental.Data.Models;
 
 namespace FribergsCarRental.Pages.Customers
 {
-    public class IndexModel : PageModel
-    {
-        private readonly ICustomer customerRepository;
+    //public class IndexModel : PageModel
+    //{
+    //    private readonly ICustomer customerRepository;
 
-        public IndexModel(ICustomer customerRepository)
-        {
-            this.customerRepository = customerRepository;
-        }
+    //    public IndexModel(ICustomer customerRepository)
+    //    {
+    //        this.customerRepository = customerRepository;
+    //    }
 
-        public IList<Customer> Customer { get; set; } = default!;
+    //    public IList<Customer> Customer { get; set; } = default!;
 
-        public async Task OnGetAsync()
-        {
-            Customer = (await customerRepository.GetAllCustomersAsync()).ToList();
-        }
-    }
+    //    public async Task OnGetAsync()
+    //    {
+    //        Customer = (await customerRepository.GetAllCustomersAsync()).ToList();
+    //    }
+    //}
 }

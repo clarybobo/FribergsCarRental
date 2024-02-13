@@ -17,40 +17,30 @@ namespace FribergsCarRental.Pages.Bookings
     {
         public class BookingIndexModel : PageModel
         {
-            private readonly IBooking bookingRepository;
+            private readonly IBooking bookingRepository;         
 
-            //private readonly IUser userRepository;
-            //private readonly ICar carRepository;
-
-            public BookingIndexModel(IBooking bookingRepository/*, IUser userRepository, ICar carRepository*/)
+            public BookingIndexModel(IBooking bookingRepository)
             {
-                this.bookingRepository = bookingRepository;
-                //this.userRepository = userRepository;
-                //this.carRepository = carRepository;
+                this.bookingRepository = bookingRepository;            
             }
 
-            public IList<Booking> Booking { get; set; } = default!;
-            [BindProperty]
-            public int BookingId { get; set; }
+            public IList<Booking> Bookings { get; set; } = default!;
 
+            [BindProperty]
+            public Booking Booking { get; set; } = default!;
+            public int BookingId { get; set; }
 
             public async Task OnGetAsync()
             {
-                Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
+                Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();                
             }
-
-            public async Task<IActionResult> OnGetDeleteAsync(int? id)
+               
+            public async Task<IActionResult> OnPostDeleteAsync(int id)
             {
-                if (id == null)
-                {
-                    return NotFound();
-                }
-
-                await bookingRepository.DeleteBookingAsync(id);
-                return RedirectToPage();
+                BookingId = id;
+                await bookingRepository.DeleteBookingAsync(BookingId);
+                return RedirectToPage("/Bookings/BookingIndex");
             }
-
-
 
         }
     }

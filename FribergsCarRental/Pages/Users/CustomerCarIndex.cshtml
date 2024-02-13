@@ -5,26 +5,26 @@
     ViewData["Title"] = "CustomerCarIndex";
 }
 
-<h1>CustomerCarIndex</h1>
+<h1>Bokningsbara bilar</h1>
 
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Car[0].Brand)
+                @Html.DisplayNameFor(model => model.Cars[0].Brand)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Car[0].Model)
+                @Html.DisplayNameFor(model => model.Cars[0].Model)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Car[0].PictureURL)
+                @Html.DisplayNameFor(model => model.Cars[0].PictureURL)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Car)
+        @foreach (var item in Model.Cars)
         {
             <tr>
                 <td>

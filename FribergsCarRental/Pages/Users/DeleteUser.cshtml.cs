@@ -49,7 +49,7 @@ namespace FribergsCarRental.Pages.Users
             }
 
             await userRepository.DeleteUserAsync(id);
-            return RedirectToPage("UserIndex");
+            return RedirectToPage("/Users/AdminPage");
         }
     }
 }

@@ -32,7 +32,7 @@
                         @if (!string.IsNullOrEmpty(customerCookie))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/CustomerPage">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/CustomerCarIndex">Bilar</a>
@@ -47,9 +47,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/AdminPage">Home</a>
                             </li>
-                            <li class="nav-item">
+                          @*   <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
-                            </li>
+                            </li> *@
                         @*     <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/AdminPage">Admin</a>
                             </li> *@

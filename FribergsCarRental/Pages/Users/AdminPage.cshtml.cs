@@ -32,7 +32,7 @@ namespace FribergsCarRental.Pages.Users
         public IList<TheUser> TheUsers { get; set; } = default!;
         public IList<Car> Cars { get; set; } = default!;
 
-        //public string AdminCookie { get; set; }
+        public string AdminCookie { get; set; }
 
 
 
@@ -41,7 +41,7 @@ namespace FribergsCarRental.Pages.Users
             Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();
             TheUsers = (await userRepository.GetAllUsersAsync()).ToList();
             Cars = (await carRepository.GetAllCarsAsync()).ToList();
-            //AdminCookie = httpContextAccessor.HttpContext.Request.Cookies["adminCookie"];
+            AdminCookie = httpContextAccessor.HttpContext.Request.Cookies["adminCookie"];
         }
 
 

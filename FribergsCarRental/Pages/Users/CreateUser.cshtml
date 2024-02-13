@@ -5,9 +5,9 @@
     ViewData["Title"] = "CreateUser";
 }
 
-<h1>Create</h1>
 
-<h4>User</h4>
+<h1>Skapa ny användare</h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -35,21 +35,13 @@
                 <input asp-for="TheUser.Password" class="form-control" />
                 <span asp-validation-for="TheUser.Password" class="text-danger"></span>
             </div>
-  @*           <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TheUser.IsAdmin" /> @Html.DisplayNameFor(model => model.TheUser.IsAdmin)
-                </label>
-            </div> *@
-            <div class="form-group">
+      <div class="form-group">
                 <input type="submit" value="Skapa" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="/Bookings/CustomerPage">Back to List</a>
-</div>
 
 @section Scripts {
     @{

@@ -14,7 +14,7 @@ namespace FribergsCarRental.Data
 
         public async Task DeleteBookingAsync(int? id)
         {
-            var existingBooking = await applicationDbContext.Bookings.FindAsync(id);
+            var existingBooking = await applicationDbContext.Bookings.FirstOrDefaultAsync(b => b.BookingId == id);
             if (existingBooking != null)
             {
                 applicationDbContext.Bookings.Remove(existingBooking);
@@ -28,8 +28,6 @@ namespace FribergsCarRental.Data
              .Include(b => b.Car)
                 .Include(b => b.TheUser)
                   .OrderBy(c => c.BookingId).ToListAsync();
-
-
         }
 
 

@@ -13,12 +13,12 @@ namespace FribergsCarRental.Pages.Cars
     public class CarIndexModel : PageModel
     {
         private readonly ICar carRepository;
-     
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public CarIndexModel(ICar carRepository)
+        public CarIndexModel(ICar carRepository, IHttpContextAccessor httpContextAccessor)
         {
             this.carRepository = carRepository;
-        
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public IList<Car> Car { get; set; } = default!;

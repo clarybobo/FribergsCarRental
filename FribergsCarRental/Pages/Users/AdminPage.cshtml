@@ -48,7 +48,7 @@
                     @Html.DisplayFor(modelItem => item.TheUser.LastName)
                 </td>
                 <td>
-            <a asp-page="/Bookings/DeleteBooking" asp-route-id="@item.BookingId">Ta bort</a>
+            <a asp-page="/Bookings/BookingIndex" asp-page-handler="OnGetDelete" asp-route-id="@item.BookingId">Ta bort</a>
             </td>
             </tr>
         }

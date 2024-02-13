@@ -10,37 +10,37 @@ using FribergsCarRental.Data.Models;
 
 namespace FribergsCarRental.Pages.Customers
 {
-    public class CreateModel : PageModel
-    {
-        private readonly ICustomer customerRepository;
+    //public class CreateModel : PageModel
+    //{
+    //    private readonly ICustomer customerRepository;
 
-        public CreateModel(ICustomer customerRepository)
-        {
-            this.customerRepository = customerRepository; 
-        }
+    //    public CreateModel(ICustomer customerRepository)
+    //    {
+    //        this.customerRepository = customerRepository; 
+    //    }
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+    //    public IActionResult OnGet()
+    //    {
+    //        return Page();
+    //    }
 
-        [BindProperty]
-        public Customer Customer { get; set; } = new Customer();
+    //    [BindProperty]
+    //    public Customer Customer { get; set; } = new Customer();
 
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
+    //    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+    //    public async Task<IActionResult> OnPostAsync()
+    //    {
 
-            if (!ModelState.IsValid || Customer == null)
-            {
-                return Page();
-            }
-            var customer = await customerRepository.AddCustomerAsync(Customer);
+    //        if (!ModelState.IsValid || Customer == null)
+    //        {
+    //            return Page();
+    //        }
+    //        var customer = await customerRepository.AddCustomerAsync(Customer);
 
-            Customer = customer;
+    //        Customer = customer;
 
-            return RedirectToPage("CustomerIndex");
-        }
-    }
+    //        return RedirectToPage("CustomerIndex");
+    //    }
+    //}
 }

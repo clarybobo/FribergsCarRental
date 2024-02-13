@@ -8,48 +8,48 @@ using Microsoft.EntityFrameworkCore;
 using FribergsCarRental.Data;
 using FribergsCarRental.Data.Models;
 
-namespace FribergsCarRental.Pages.Customers
-{
-    public class DeleteModel : PageModel
-    {
-        private readonly ICustomer customerRepository;
+//namespace FribergsCarRental.Pages.Customers
+//{
+//    public class DeleteModel : PageModel
+//    {
+//        private readonly ICustomer customerRepository;
 
-        public DeleteModel(ICustomer customerRepository)
-        {
-            this.customerRepository = customerRepository;
-        }
+//        public DeleteModel(ICustomer customerRepository)
+//        {
+//            this.customerRepository = customerRepository;
+//        }
 
-        [BindProperty]
-        public Customer Customer { get; set; } = default!;
+//        [BindProperty]
+//        public Customer Customer { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+//        public async Task<IActionResult> OnGetAsync(int? id)
+//        {
+//            if (id == null)
+//            {
+//                return NotFound();
+//            }
 
-            var customer = await customerRepository.GetCustomerByIdAsync(id);
+//            var customer = await customerRepository.GetCustomerByIdAsync(id);
 
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            Customer = customer;
-            return Page();
-        }
+//            if (customer == null)
+//            {
+//                return NotFound();
+//            }
+//            Customer = customer;
+//            return Page();
+//        }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            var customer = await customerRepository.GetCustomerByIdAsync(id);
+//        public async Task<IActionResult> OnPostAsync(int? id)
+//        {
+//            var customer = await customerRepository.GetCustomerByIdAsync(id);
 
-            if (customer == null)
-            {
-                return NotFound();
-            }
+//            if (customer == null)
+//            {
+//                return NotFound();
+//            }
             
-            await customerRepository.DeleteCustomerAsync(id);
-            return RedirectToPage("CustomerIndex");
-        }
-    }
-}
+//            await customerRepository.DeleteCustomerAsync(id);
+//            return RedirectToPage("CustomerIndex");
+//        }
+//    }
+//}

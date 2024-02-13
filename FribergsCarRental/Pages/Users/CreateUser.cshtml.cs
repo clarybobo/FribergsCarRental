@@ -22,14 +22,15 @@ namespace FribergsCarRental.Pages.Users
             this.httpContextAccessor = httpContextAccessor;
         }
 
+
+        [BindProperty]
+        public TheUser TheUser { get; set; } = new TheUser();
+
+
         public IActionResult OnGet()
         {
             return Page();
         }
-
-        [BindProperty]
-        public TheUser TheUser { get; set; } = new TheUser();
-        
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -38,31 +39,26 @@ namespace FribergsCarRental.Pages.Users
             {
                 return Page();
             }
+
+            //Lägger till en användare och kopplar ihop användarvariabeln med användarpropertyn
             var user = await userRepository.AddUserAsync(TheUser);
+            TheUser = user; 
 
-            TheUser = user;
-
-
-
-
-     
             var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
-            string userCookie = userId.ToString();
+            string userCookie = userId.ToString(); //Användarens id omvandlas till en string för att cookies ska kunna lagra id
 
-            CookieOptions options = new CookieOptions();
-            
-                if (user.IsAdmin)
-                {
-                    httpContextAccessor.HttpContext.Response.Cookies.Append("userCookie", userCookie, options);
-                    return RedirectToPage("/Users/AdminPage");
-                }
-                else
-                {
-                    httpContextAccessor.HttpContext.Response.Cookies.Append("userCookie", userCookie, options);
-                    return RedirectToPage("/Users/CustomerPage");
-                }
-
-              
+            CookieOptions options = new CookieOptions();      
+                   
+            if (user.IsAdmin)
+            {
+                httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
+                return RedirectToPage("/Users/Login");
+            }
+            else
+            {
+                httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
+                return RedirectToPage("/Users/Login");
+            }
         }
     }
 }
