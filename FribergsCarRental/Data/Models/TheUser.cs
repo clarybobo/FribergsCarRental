@@ -12,6 +12,7 @@ namespace FribergsCarRental.Data.Models
         [Display(Name ="Efternamn")]
         public string LastName { get; set; }
         [Required]
+        [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
         [Required]
