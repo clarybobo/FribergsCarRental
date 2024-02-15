@@ -9,6 +9,6 @@ namespace FribergsCarRental.Data
         Task<Booking> GetBookingByIdAsync(int? id);
         Task<Booking> AddBookingAsync(Booking booking);
 
-        //Task<Booking> EditBookingAsync(Booking booking, int id);
+        //Task<Booking> GetLoggedInCustomersBooking(int? id);
     }
 }

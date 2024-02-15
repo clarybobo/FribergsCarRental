@@ -29,8 +29,8 @@
     <tbody>
         @foreach (var item in Model.Bookings)
         {
-            <tr>            
-                <td>                    
+            <tr>
+                <td>
                     @Html.DisplayFor(modelItem => item.Car.Brand)
                     @Html.DisplayFor(modelItem => item.Car.Model)
                 </td>
@@ -48,14 +48,9 @@
                 <td>
                     <a asp-page="/Bookings/CustomersBookingIndex" asp-page-handler="Delete" asp-route-id="@item.BookingId">Ta bort</a>
                 </td>
-                 @*    <form method="post" asp-page-handler="Delete" asp-route-id="@item.BookingId" onsubmit="return confirm('Är du säker på att du vill ta bort bokningen?');">
-                       
-                        <button type="submit" value="Delete" class="btn btn-danger">Ta bort</button>
-                    </form> *@
-                </td>
             </tr>
 
-           
+
         }
     </tbody>
 </table>

@@ -42,19 +42,6 @@ namespace FribergsCarRental.Pages.Users
             Page();
         }
 
-        //public async Task DeleteOnPost(int? id)
-        //{
-        //    var booking = await bookingRepository.GetBookingByIdAsync(id);
-
-        //    if (booking == null)
-        //    {
-        //        NotFound();
-        //    }           
-
-        //    await bookingRepository.DeleteBookingAsync(id);
-        //    RedirectToPage("/Users/CustomerPage");
-
-        //}
     }
 }
 
