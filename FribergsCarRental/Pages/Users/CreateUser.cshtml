@@ -2,7 +2,7 @@
 @model FribergsCarRental.Pages.Users.CreateModel
 
 @{
-    ViewData["Title"] = "CreateUser";
+    ViewData["Title"] = "CreateUser";       
 }
 
 
@@ -10,10 +10,9 @@
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-          @*   <input asp-for="TheUser.TheUserId" type="hidden" /> *@
-            <input asp-for="TheUser.IsAdmin" type="hidden" />
+    <div class="col-md-4">   
+        <form method="post">         
+                <input asp-for="TheUser.IsAdmin" type="hidden" />                
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TheUser.FirstName" class="control-label"></label>
@@ -34,7 +33,7 @@
                 <label asp-for="TheUser.Password" class="control-label"></label>
                 <input asp-for="TheUser.Password" class="form-control" />
                 <span asp-validation-for="TheUser.Password" class="text-danger"></span>
-            </div>
+            </div>       
       <div class="form-group">
                 <input type="submit" value="Skapa" class="btn btn-primary" />
             </div>

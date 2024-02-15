@@ -24,22 +24,18 @@ namespace FribergsCarRental.Pages.Users
             this.bookingRepository = bookingRepository;
         }
 
-        public IList<Booking> Bookings { get; set; } = default!;
+        //public IList<Booking> Bookings { get; set; } = default!;
         //[BindProperty]
         //public Booking BookingId { get; set; }
         [BindProperty]
         public string UserFirstName { get; set; }
 
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
             UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
-            Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();
-            //if (id != null)
-            //{ BookingId = (await bookingRepository.GetBookingByIdAsync(id)); }
-
-            //SKAPA OCH LÄGG TILL metod som sorterar bookings på id
-            Page();
+            //Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();
+            //Page();
         }
 
     }

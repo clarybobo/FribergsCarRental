@@ -27,6 +27,7 @@ namespace FribergsCarRental.Pages.Bookings
             public async Task OnGetAsync()
             {
                 Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
+                //ÄNDRA TILL METOD SOM HÄMTAR BOOKINGS PÅ KUND ID 
             }
 
             public async Task<IActionResult> OnPostDeleteAsync(int? id)

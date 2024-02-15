@@ -7,6 +7,49 @@
 
 <h1>Kunder</h1>
 
+
+<h1>Skapa ny användare</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input asp-for="TheUser.IsAdmin" type="hidden" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TheUser.FirstName" class="control-label"></label>
+                <input asp-for="TheUser.FirstName" class="form-control" />
+                <span asp-validation-for="TheUser.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TheUser.LastName" class="control-label"></label>
+                <input asp-for="TheUser.LastName" class="form-control" />
+                <span asp-validation-for="TheUser.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TheUser.Email" class="control-label"></label>
+                <input asp-for="TheUser.Email" class="form-control" />
+                <span asp-validation-for="TheUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TheUser.Password" class="control-label"></label>
+                <input asp-for="TheUser.Password" class="form-control" />
+                <span asp-validation-for="TheUser.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Skapa" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+@* 
 <p>
     <a asp-page="CreateUser">Lägg till kund</a>
 </p>
@@ -67,3 +110,4 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+ *@

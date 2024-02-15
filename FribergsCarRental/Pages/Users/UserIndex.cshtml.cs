@@ -13,17 +13,59 @@ namespace FribergsCarRental.Pages.Users
     public class IndexModel : PageModel
     {
         private readonly IUser userRepository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public IndexModel(IUser userRepository)
+        public IndexModel(IUser userRepository, IHttpContextAccessor httpContextAccessor)
         {
             this.userRepository = userRepository;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
-        public IList<TheUser> TheUser { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        [BindProperty]
+        public TheUser TheUser { get; set; } = new TheUser();
+
+        public IActionResult OnGet()
         {
-            TheUser = (await userRepository.GetAllUsersAsync()).ToList();
+            return Page();
         }
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid || TheUser == null)
+            {
+                return Page();
+            }
+
+
+            //Instanserar upp en user - kopplar samman den till TheUser
+            var user = await userRepository.AddUserAsync(TheUser);
+            TheUser = user;
+
+      
+            return RedirectToPage("/Users/AdminPage");
+
+        }
+
+
+
+
+        //    private readonly IUser userRepository;
+
+        //    public IndexModel(IUser userRepository)
+        //    {
+        //        this.userRepository = userRepository;
+        //    }
+
+        //    public IList<TheUser> TheUser { get; set; } = default!;
+
+        //    public async Task OnGetAsync()
+        //    {
+        //        TheUser = (await userRepository.GetAllUsersAsync()).ToList();
+        //    }
+
+
+        //}
     }
 }

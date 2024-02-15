@@ -5,11 +5,7 @@
     ViewData["Title"] = "CustomersBookingIndex";
 }
 
-<h1>CustomersBookingIndex</h1>
 
-<p>
-    <a asp-page="Create">Skapa ny bokning</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -55,6 +51,9 @@
         }
     </tbody>
 </table>
+<p>
+    <a asp-page="/Users/CustomerCarIndex">Skapa ny bokning</a>
+</p>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

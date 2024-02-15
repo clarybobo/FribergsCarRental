@@ -40,26 +40,102 @@ namespace FribergsCarRental.Pages.Users
                 return Page();
             }
 
-            //Lägger till en användare och kopplar ihop användarvariabeln med användarpropertyn
+
+            //Instanserar upp en user - kopplar samman den till TheUser
             var user = await userRepository.AddUserAsync(TheUser);
-            TheUser = user; 
+            TheUser = user;
 
+            //Letar reda på användarens id via mailen från formuläret
             var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
-            string userCookie = userId.ToString(); //Användarens id omvandlas till en string för att cookies ska kunna lagra id
+            //Lagrar användar-ID i en string 
+            string userCookie = userId.ToString();
 
-            CookieOptions options = new CookieOptions();      
-                   
-            if (user.IsAdmin)
-            {
-                httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
-                return RedirectToPage("/Users/Login");
-            }
-            else
-            {   
-                
+            //Skapar upp en instans av inbyggda Cookie-klassen
+            CookieOptions options = new CookieOptions();
+
+            //if ()
+            //{
+            //    //httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
+            //    return RedirectToPage("/Users/UserIndex");
+            //}
+            //else
+            //{
+                await userRepository.GetUserByEmailAsync(TheUser.Email);
+                await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+                httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
                 httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
-                return RedirectToPage("/Users/Login");
-            }
+                return RedirectToPage("/Users/CustomerPage");
+            //}
         }
+
+        //public async Task<IActionResult> OnPostCreateCustomerAsync()
+        //{
+        //    if (!ModelState.IsValid || TheUser == null)
+        //    {
+        //        return Page();
+        //    }
+
+
+        //    //Instanserar upp en user - kopplar samman den till TheUser
+        //    var user = await userRepository.AddUserAsync(TheUser);
+        //    TheUser = user;
+
+        //    //Letar reda på användarens id via mailen från formuläret
+        //    var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+        //    //Lagrar användar-ID i en string 
+        //    string userCookie = userId.ToString();
+
+        //    //Skapar upp en instans av inbyggda Cookie-klassen
+        //    CookieOptions options = new CookieOptions();
+
+        //    //if (TheUser.IsAdmin)
+        //    //{
+        //    //    //httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
+        //    //    return RedirectToPage("/Users/UserIndex");
+        //    //}
+        //    //else
+        //    //{              
+        //    await userRepository.GetUserByEmailAsync(TheUser.Email);
+        //    await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+        //    httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
+        //    httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
+        //    return RedirectToPage("/Users/CustomerPage");
+        //    //}
+        //}
+
+        //public async Task<IActionResult> OnPostAdminCreateCustomerAsync()
+        //{
+        //    if (!ModelState.IsValid || TheUser == null)
+        //    {
+        //        return Page();
+        //    }
+
+
+        //    //Instanserar upp en user - kopplar samman den till TheUser
+        //    var user = await userRepository.AddUserAsync(TheUser);
+        //    TheUser = user;
+
+        //    //Letar reda på användarens id via mailen från formuläret
+        //    var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+        //    //Lagrar användar-ID i en string 
+        //    string userCookie = userId.ToString();
+
+        //    //Skapar upp en instans av inbyggda Cookie-klassen
+        //    CookieOptions options = new CookieOptions();
+
+        //    //if (TheUser.IsAdmin)
+        //    //{
+        //    //    //httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
+        //    //    return RedirectToPage("/Users/UserIndex");
+        //    //}
+        //    //else
+        //    //{              
+        //    await userRepository.GetUserByEmailAsync(TheUser.Email);
+        //    await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+        //    httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
+        //    httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
+        //    return RedirectToPage("/Users/AdminPage");
+        //    //}
     }
 }
+
