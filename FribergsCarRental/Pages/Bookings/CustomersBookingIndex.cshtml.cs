@@ -36,9 +36,6 @@ namespace FribergsCarRental.Pages.Bookings
                         Booking = (await bookingRepository.GetLoggedInCustomersBooking(theUserId)).ToList();
                     }
                 }
-
-                //Booking = (await bookingRepository.GetLoggedInCustomersBooking()).ToList();
-                //ÄNDRA TILL METOD SOM HÄMTAR BOOKINGS PÅ KUND ID 
             }
 
             public async Task<IActionResult> OnPostDeleteAsync(int? id)

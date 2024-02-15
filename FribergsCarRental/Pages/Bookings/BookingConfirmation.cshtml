@@ -1,0 +1,24 @@
+﻿@page
+@model FribergsCarRental.Pages.Bookings.BookingConfirmationModel
+
+@{
+    ViewData["Title"] = "BookingConfirmation";
+}
+
+<h1>Bokningsbekräftelse</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+ 
+</table>
