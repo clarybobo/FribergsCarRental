@@ -15,18 +15,29 @@ namespace FribergsCarRental.Pages.Bookings
         public class CustomersBookingIndexModel : PageModel
         {
             private readonly IBooking bookingRepository;
-        
+
 
             public CustomersBookingIndexModel(IBooking bookingRepository)
             {
-                this.bookingRepository = bookingRepository;          
+                this.bookingRepository = bookingRepository;
             }
 
-            public IList<Booking> Booking { get; set; } = default!;      
+            public IList<Booking> Booking { get; set; } = default!;
+            public int TheUserId { get; set; }
 
             public async Task OnGetAsync()
             {
-                Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
+                var theUserIdCookie = HttpContext.Request.Cookies["customerCookie"];
+                if (!string.IsNullOrEmpty(theUserIdCookie))
+                {
+                    if (int.TryParse(theUserIdCookie, out int theUserId))
+                    {
+                        TheUserId = theUserId;
+                        Booking = (await bookingRepository.GetLoggedInCustomersBooking(theUserId)).ToList();
+                    }
+                }
+
+                //Booking = (await bookingRepository.GetLoggedInCustomersBooking()).ToList();
                 //ÄNDRA TILL METOD SOM HÄMTAR BOOKINGS PÅ KUND ID 
             }
 
@@ -45,4 +56,4 @@ namespace FribergsCarRental.Pages.Bookings
     }
 }
 
-    
+
