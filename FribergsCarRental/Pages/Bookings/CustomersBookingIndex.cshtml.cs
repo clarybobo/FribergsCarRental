@@ -28,6 +28,18 @@ namespace FribergsCarRental.Pages.Bookings
             {
                 Booking = (await bookingRepository.GetAllBookingAsync()).ToList();
             }
+
+            public async Task<IActionResult> OnPostDeleteAsync(int? id)
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                await bookingRepository.DeleteBookingAsync(id);
+
+                return RedirectToPage();
+            }
         }
     }
 }

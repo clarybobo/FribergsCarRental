@@ -55,7 +55,8 @@ namespace FribergsCarRental.Pages.Users
                 return RedirectToPage("/Users/Login");
             }
             else
-            {
+            {   
+                
                 httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
                 return RedirectToPage("/Users/Login");
             }

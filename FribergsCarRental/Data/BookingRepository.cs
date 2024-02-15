@@ -38,19 +38,14 @@ namespace FribergsCarRental.Data
                 .Include(b => b.TheUser)
                 .FirstOrDefaultAsync(c => c.BookingId == id);
             return booking;
-
         }
+
         public async Task<Booking> AddBookingAsync(Booking booking)
         {
             applicationDbContext.Bookings.Add(booking);
             await applicationDbContext.SaveChangesAsync();
             return booking;
         }
-
-        //public async Task<Booking> EditBookingAsync(Booking booking, int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
     }
 }

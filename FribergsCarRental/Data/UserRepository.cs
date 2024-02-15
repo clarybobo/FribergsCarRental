@@ -18,8 +18,7 @@ namespace FribergsCarRental.Data
 
         public async Task<TheUser> GetUserByIdAsync(int? id)
         {
-            var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.TheUserId == id);
-            return user;
+            return await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.TheUserId == id);            
         }
 
         public async Task<TheUser> AddUserAsync(TheUser user)
@@ -57,29 +56,14 @@ namespace FribergsCarRental.Data
 
         public async Task<TheUser> GetUserByEmailAsync(string email)
         {
-            var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);
-            return user;
+            return await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);            
         }
+
         public async Task<int> GetLoggedInUserIdAsync(string email)
         {
             var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);
             return user?.TheUserId ?? 0;
         }
-
-
-        //public Task<User> AddUserAsync(User user)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task<User> GetUserByEmailAsync(string email)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task<User> GetUserByIdAsync(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            
     }
 }

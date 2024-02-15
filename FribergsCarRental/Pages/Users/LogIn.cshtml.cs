@@ -40,7 +40,9 @@ namespace FribergsCarRental.Pages.Users
             CookieOptions options = new CookieOptions();
             if (user != null && user.Password == TheUser.Password)
             {
-                httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
+
+                httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);                
+
                 if (user.IsAdmin)
                 {                    
                     httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);

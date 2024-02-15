@@ -67,11 +67,13 @@ namespace FribergsCarRental.Pages.Cars
                 }
                 else
                 {
-                    throw;
+                    return Page();
                 }
             }
 
             return RedirectToPage("/Users/AdminCarIndex");
         }
+
+        
     }
 }

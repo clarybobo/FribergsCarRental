@@ -33,16 +33,23 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TheUser)
+                    @Html.DisplayFor(modelItem => item.TheUser.FirstName)
+                    @Html.DisplayFor(modelItem => item.TheUser.LastName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Car)
+                    @Html.DisplayFor(modelItem => item.Car.Brand)
+                    @Html.DisplayFor(modelItem => item.Car.Model)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.BookingId" onsubmit="return confirm('Är du säker på att du vill ta bort bokningen?');">
+                        <button type="submit" value="Delete" class="btn btn-danger">Ta bort</button>
+                    </form>
                 </td>
             </tr>
         }

@@ -26,8 +26,7 @@ namespace FribergsCarRental.Data
 
         public async Task<Car> GetCarByIdAsync(int? id)
         {
-            var car = await applicationDbContext.Cars.FirstOrDefaultAsync(c => c.CarId == id);
-            return car;
+            return await applicationDbContext.Cars.FirstOrDefaultAsync(c => c.CarId == id);            
         }
 
         public async Task<Car> EditCarAsync(Car car, int id)
@@ -38,6 +37,7 @@ namespace FribergsCarRental.Data
             {
                 existingCar.Brand = car.Brand;
                 existingCar.Model = car.Model;
+                existingCar.PictureURL = car.PictureURL;
                 await applicationDbContext.SaveChangesAsync();
                 return existingCar;
             }

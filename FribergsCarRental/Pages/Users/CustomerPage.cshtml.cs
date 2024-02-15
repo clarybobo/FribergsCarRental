@@ -25,7 +25,8 @@ namespace FribergsCarRental.Pages.Users
         }
 
         public IList<Booking> Bookings { get; set; } = default!;
-
+        //[BindProperty]
+        //public Booking BookingId { get; set; }
         [BindProperty]
         public string UserFirstName { get; set; }
 
@@ -34,8 +35,26 @@ namespace FribergsCarRental.Pages.Users
         {
             UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
             Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();
+            //if (id != null)
+            //{ BookingId = (await bookingRepository.GetBookingByIdAsync(id)); }
+
+            //SKAPA OCH LÄGG TILL metod som sorterar bookings på id
+            Page();
         }
 
+        //public async Task DeleteOnPost(int? id)
+        //{
+        //    var booking = await bookingRepository.GetBookingByIdAsync(id);
+
+        //    if (booking == null)
+        //    {
+        //        NotFound();
+        //    }           
+
+        //    await bookingRepository.DeleteBookingAsync(id);
+        //    RedirectToPage("/Users/CustomerPage");
+
+        //}
     }
 }
 

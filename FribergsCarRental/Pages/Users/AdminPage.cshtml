@@ -8,6 +8,9 @@
 <h1>Välkommen Admin!</h1>
 
 
+<br />
+<br />
+<br />
 
 
 <h2>Bokningar</h2>
@@ -55,16 +58,14 @@
     </tbody>
 </table>
 
-
-
+<br />
+<br />
+<br />
 
 
 
 
 <h2>Kunder</h2>
-<p>
-    <a asp-page="/Users/CreateUser">Lägg till kund</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -86,8 +87,8 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
 
+    <tbody>      
 
         @foreach (var item in Model.TheUsers)
         {
@@ -115,17 +116,20 @@
             </tr>
         }
     </tbody>
-
 </table>
+<p>
+    <a asp-page="/Users/CreateUser">Lägg till kund</a>
+</p>
 
 
+
+<br />
+<br />
+<br />
 
 
 <h2>Bilar</h2>
 
-<p>
-    <a asp-page="/Cars/CreateCar">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -163,6 +167,9 @@
         }
     </tbody>
 </table>
+<p>
+    <a asp-page="/Cars/CreateCar">Lägg till bil</a>
+</p>
 
 
 @section Scripts {
