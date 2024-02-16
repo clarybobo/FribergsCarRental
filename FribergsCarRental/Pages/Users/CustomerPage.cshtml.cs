@@ -15,13 +15,13 @@ namespace FribergsCarRental.Pages.Users
     {
 
         private readonly IHttpContextAccessor httpContextAccessor;
-        private readonly IBooking bookingRepository;
+      
 
-        public CustomerPageModel(IHttpContextAccessor httpContextAccessor, IBooking bookingRepository)
+        public CustomerPageModel(IHttpContextAccessor httpContextAccessor)
         {
 
             this.httpContextAccessor = httpContextAccessor;
-            this.bookingRepository = bookingRepository;
+          
         }
                
         [BindProperty]

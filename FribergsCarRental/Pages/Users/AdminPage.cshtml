@@ -8,7 +8,7 @@
 <h1>Välkommen Admin!</h1>
 
 
-<br />
+@* <br /> *@
  
 
 <h2>Bokningar</h2>
@@ -55,8 +55,8 @@
         }
     </tbody>
 </table>
-
-<br />
+@* 
+<br /> *@
 
 
 
@@ -106,8 +106,7 @@
                     @Html.DisplayFor(modelItem => item.IsAdmin)
                 </td>
                 <td>
-                    <a asp-page="/Users/EditUser" asp-route-id="@item.TheUserId">Ändra</a> |
-                    <a asp-page="/Users/Details" asp-route-id="@item.TheUserId">Details</a> |
+                    <a asp-page="/Users/EditUser" asp-route-id="@item.TheUserId">Ändra</a> |                   
                     <a asp-page="/Users/DeleteUser" asp-route-id="@item.TheUserId">Ta bort</a>
                 </td>
             </tr>
@@ -120,7 +119,7 @@
 
 
 
-<br />
+@* <br /> *@
 
 
 
@@ -155,17 +154,19 @@
                     @Html.DisplayFor(modelItem => item.PictureURL)
                 </td>
                 <td>
-                    <a asp-page="/Cars/EditCar" asp-route-id="@item.CarId">Ändra</a> |
-                    <a asp-page="/Cars/Details" asp-route-id="@item.CarId">Details</a> |
-                    <a asp-page="/Cars/DeleteCar" asp-route-id="@item.CarId">Radera</a>
+                    <a asp-page="/Cars/EditCar" asp-route-id="@item.CarId">Ändra</a> |                 
+                    <a asp-page="/Cars/DeleteCar" asp-route-id="@item.CarId">Ta bort</a>
                 </td>
             </tr>
-        }
-    </tbody>
+        }       
+        
+    </tbody> 
 </table>
 <p>
     <a asp-page="/Cars/CreateCar">Lägg till bil</a>
 </p>
+
+
 
 
 @section Scripts {

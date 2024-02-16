@@ -70,7 +70,7 @@ namespace FribergsCarRental.Pages.Users
                 }
             }
 
-            return RedirectToPage("UserIndex");
+            return RedirectToPage("/Users/AdminPage");
         }
     }
 }

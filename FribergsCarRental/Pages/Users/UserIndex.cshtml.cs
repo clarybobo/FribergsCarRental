@@ -13,12 +13,11 @@ namespace FribergsCarRental.Pages.Users
     public class IndexModel : PageModel
     {
         private readonly IUser userRepository;
-        private readonly IHttpContextAccessor httpContextAccessor;
+       
 
-        public IndexModel(IUser userRepository, IHttpContextAccessor httpContextAccessor)
+        public IndexModel(IUser userRepository)
         {
-            this.userRepository = userRepository;
-            this.httpContextAccessor = httpContextAccessor;
+            this.userRepository = userRepository;            
         }
 
 
