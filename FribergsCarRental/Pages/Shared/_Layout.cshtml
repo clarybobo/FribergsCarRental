@@ -12,67 +12,56 @@
 </head>
 <body>
     @{
-        
+
         var adminCookie = Context.Request.Cookies["adminCookie"];
         var customerCookie = Context.Request.Cookies["customerCookie"];
     }
 
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">FribergsCarRental</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav id="main-navigation" class="navigation">
+            <a class="friberg-logo-link" asp-area="" asp-page="/Index">
+                <img class="friberg-logo" src="~/css/friberg_logo.png" alt="logo" width="200px" />
+            </a>
+            <ul class="navigationbar">
+    
+                @if (!string.IsNullOrEmpty(customerCookie))
+                {
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/CustomerPage">MINA SIDOR</a>
+                    </li>
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/CustomerCarIndex">BILAR</a>
+                    </li>
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Bookings/CustomersBookingIndex">MINA BOKNINGAR</a>
+                    </li>
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/Login">LOGGA UT</a>
+                    </li>
+                }
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">       
-                        
-                        @if (!string.IsNullOrEmpty(customerCookie))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/CustomerPage">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/CustomerCarIndex">Bilar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/CustomersBookingIndex">Mina bokningar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
-                            </li>
-                        }
+                else if (!string.IsNullOrEmpty(adminCookie))
+                {
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/AdminPage">MINA SIDOR</a>
+                    </li>
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/Login">LOGGA UT</a>
+                    </li>
+                }
 
-                        else if (!string.IsNullOrEmpty(adminCookie))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/AdminPage">Home</a>
-                            </li>                  
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga ut</a>
-                            </li>
-                        }
+                else
+                {
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Cars/CarIndex">BILAR</a>
+                    </li>
+                    <li>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/Login">LOGGA IN/SKAPA KONTO</a>
+                    </li>
+                }
 
-                        else                     
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Cars/CarIndex">Bilar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Logga in/Skapa konto</a>
-                            </li>
-                        }
-
-                    </ul>
-                </div>
-
-            </div>
+            </ul>
         </nav>
     </header>
 

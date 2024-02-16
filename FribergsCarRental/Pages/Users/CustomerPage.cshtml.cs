@@ -23,19 +23,13 @@ namespace FribergsCarRental.Pages.Users
             this.httpContextAccessor = httpContextAccessor;
             this.bookingRepository = bookingRepository;
         }
-
-        //public IList<Booking> Bookings { get; set; } = default!;
-        //[BindProperty]
-        //public Booking BookingId { get; set; }
+               
         [BindProperty]
         public string UserFirstName { get; set; }
 
-
-        public void OnGet()
+                public void OnGet()
         {
-            UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];
-            //Bookings = (await bookingRepository.GetAllBookingAsync()).ToList();
-            //Page();
+            UserFirstName = httpContextAccessor.HttpContext.Request.Cookies["userFirstName"];           
         }
 
     }

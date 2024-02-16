@@ -4,7 +4,7 @@
     ViewData["Title"] = "LogIn";
 }
 
-
+<br />
 <h1>Logga in</h1>
 
 <form method="post">
@@ -22,10 +22,10 @@
         <input asp-for="TheUser.Password" type="password" class="form-control" />
         <span asp-validation-for="TheUser.Password" class="text-danger"></span>
     </div>
-
-    <button type="submit" class="btn btn-primary">Logga in</button>
+    <br />
+    <button type="submit" class="btn">Logga in</button>
 </form>
-
+<br />
         <h1>Skapa nytt konto</h1>
         <a asp-page="/Users/CreateUser">Skapa konto</a>
 

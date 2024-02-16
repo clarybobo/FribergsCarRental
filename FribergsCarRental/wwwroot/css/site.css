@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +19,136 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+header, footer {
+    padding: 10px;
+    margin: 0px;
+    background-color: #EDEEED;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+body {
+    margin-bottom: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: white;
+    color: black;
+}
+
+/*LOGO STYLE*/
+.friberg-logo {
+    width: 160px;
+}
+
+/*NAVIGATION*/
+
+nav {
+    text-align: center;
+}
+nav li {
+    display: inline-block;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 2px;
+    padding: 2px;
+    overflow: hidden;
+    background-color: #EDEEED;
+}
+
+nav a {
+    display: block;
+    padding: 6px;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/*TABLE*/
+
+.table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th {
+    background-color: #EDEEED;
+    color: #060443e7;
+    padding: 30px;
+    text-align: left;  
+}
+
+table td {
+    padding: 20px;
+    border: 1px #ffffff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/*BUTTONS*/
+.btn, .btn-function, .btn-positive, .btn-negative {
+    padding: 8px 16px;
+/*    border: 3px solid;*/
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #060443e7;
+}
+
+.btn {
+    background-color: #FF961B;
+}
+
+.btn-function {
+    background-color: #70b2d547;
+    border-color: #70b2d5;
+}
+
+.btn-positive {
+    background-color: #70d57257;
+    border-color: #70d571;
+}
+
+.btn-negative {
+    background-color: #c73e3e4a;
+    border-color: #ba4343;
+}
+
+/*Hover-funktion på knapparna: */
+.btn:hover {
+    background-color: #FF8004;
+}
+
+.btn-function:hover {
+    background-color: #70b2d5;
+}
+
+.btn-positive:hover {
+    background-color: #70d571;
+}
+
+.btn-negative:hover {
+    background-color: #ba4343;
+    ;
+}
+
+
+footer {
+    color: black;
 }
