@@ -40,15 +40,13 @@ namespace FribergsCarRental.Data
             return booking;
         }
 
-        //skapa en metod där som hämtar alla bokningar för en given kund där kundId kan tas som inparameter,
-        //sedan kan du använda den när en kund vill se sina bokingar och skicka med den inloggade kundens id som argument till metodanropet.
         public async Task<IEnumerable<Booking>> GetLoggedInCustomersBooking(int? id)
         {
             return await applicationDbContext.Bookings
            .Include(b => b.Car)
               .Include(b => b.TheUser)
               .Where(b => b.TheUser.TheUserId == id)
-                .OrderBy(c => c.BookingId).ToListAsync();
+                .OrderBy(c => c.StartDate).ToListAsync();
         }
 
         public async Task<Booking> AddBookingAsync(Booking booking)

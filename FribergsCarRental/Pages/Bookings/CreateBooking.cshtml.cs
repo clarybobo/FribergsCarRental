@@ -46,7 +46,7 @@ namespace FribergsCarRental.Pages.Bookings
             // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
 
             public async Task<IActionResult> OnPostAsync(int id)
-            {
+            {                             
                 CarId = id;
                 Car = await carRepository.GetCarByIdAsync(CarId);
                 Booking.Car = Car;

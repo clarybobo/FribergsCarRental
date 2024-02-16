@@ -43,10 +43,18 @@
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
                 <td>
-                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.BookingId" onsubmit="return confirm('Är du säker på att du vill ta bort bokningen?');">
+                    @if (item.StartDate > DateTime.Now)
+                    {
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.BookingId">
+                            <button type="submit" value="Delete" class="btn btn-danger">Ta bort</button>
+                        </form>
+                    }
+                </td>
+              @*   <td>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.BookingId">
                         <button type="submit" value="Delete" class="btn btn-danger">Ta bort</button>
                     </form>
-                </td>
+                </td> *@
             </tr>
         }
     </tbody>

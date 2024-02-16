@@ -4,14 +4,12 @@
 @{
     ViewData["Title"] = "AdminPage";
 }
-
+<br />
 <h1>Välkommen Admin!</h1>
 
 
 <br />
-<br />
-<br />
-
+ 
 
 <h2>Bokningar</h2>
 <table class="table">
@@ -59,8 +57,7 @@
 </table>
 
 <br />
-<br />
-<br />
+
 
 
 
@@ -124,8 +121,7 @@
 
 
 <br />
-<br />
-<br />
+
 
 
 <h2>Bilar</h2>
@@ -159,9 +155,9 @@
                     @Html.DisplayFor(modelItem => item.PictureURL)
                 </td>
                 <td>
-                    <a asp-page="/Cars/EditCar" asp-route-id="@item.CarId">Edit</a> |
+                    <a asp-page="/Cars/EditCar" asp-route-id="@item.CarId">Ändra</a> |
                     <a asp-page="/Cars/Details" asp-route-id="@item.CarId">Details</a> |
-                    <a asp-page="/Cars/DeleteCar" asp-route-id="@item.CarId">Delete</a>
+                    <a asp-page="/Cars/DeleteCar" asp-route-id="@item.CarId">Radera</a>
                 </td>
             </tr>
         }
