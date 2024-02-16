@@ -4,9 +4,7 @@ namespace FribergsCarRental.Data
 {
     public interface IUser
     {
-        //Task<User> GetUserByEmailAsync(string email);
-        //Task<User> GetUserByIdAsync(int id);
-        //Task<User> AddUserAsync(User user);
+       
         Task<IEnumerable<TheUser>> GetAllUsersAsync();
         Task<TheUser> GetUserByIdAsync(int? id);
         Task<TheUser> GetUserByEmailAsync(string email);

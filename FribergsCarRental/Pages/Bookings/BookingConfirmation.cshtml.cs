@@ -25,8 +25,6 @@ namespace FribergsCarRental.Pages.Bookings
             public Booking Booking { get; set; }
 
     
-
-
             public async Task<IActionResult> OnGetAsync(int? id)
             {
                 if (id == null)
@@ -46,13 +44,12 @@ namespace FribergsCarRental.Pages.Bookings
 
             public async Task<IActionResult> OnPostAsync()
             {
-                // If the Booking property is null or the BookingId is not set, return a 404 Not Found
+               
                 if (Booking == null)
                 {
                     return NotFound();
                 }
-
-                // Redirect to the confirmation page and pass the booking ID as a query parameter
+                               
                 return RedirectToPage("/Bookings/CustomersBookingIndex");
             }
         }

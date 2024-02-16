@@ -4,57 +4,9 @@
 @{
     ViewData["Title"] = "CustomerPage";
 }
-
+<br /><br />
 <h1>Välkommen @Model.UserFirstName! </h1>
 
-@* <h2>Dina bokningar: </h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Bookings[0].Car)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bookings[0].StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bookings[0].EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bookings[0].TheUser)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Bookings)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Car.Brand)
-                    @Html.DisplayFor(modelItem => item.Car.Model)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TheUser.FirstName)
-                    @Html.DisplayFor(modelItem => item.TheUser.LastName)
-                </td>
-                <td>
-                <td>
-                    <a asp-page="/Bookings/CustomersBookingIndex" asp-page-handler="Delete" asp-route-id="@item.BookingId">Ta bort</a>
-                </td>
-            </tr>
-
-
-        }
-    </tbody>
-</table>
-<a asp-page="/Users/CustomerCarIndex">Skapa ny bokning</a> *@
 
 
 @section Scripts {

@@ -48,24 +48,5 @@ namespace FribergsCarRental.Pages.Users
 
         }
 
-
-
-
-        //    private readonly IUser userRepository;
-
-        //    public IndexModel(IUser userRepository)
-        //    {
-        //        this.userRepository = userRepository;
-        //    }
-
-        //    public IList<TheUser> TheUser { get; set; } = default!;
-
-        //    public async Task OnGetAsync()
-        //    {
-        //        TheUser = (await userRepository.GetAllUsersAsync()).ToList();
-        //    }
-
-
-        //}
     }
 }

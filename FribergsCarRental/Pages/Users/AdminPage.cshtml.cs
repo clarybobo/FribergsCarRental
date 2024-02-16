@@ -44,11 +44,6 @@ namespace FribergsCarRental.Pages.Users
             AdminCookie = httpContextAccessor.HttpContext.Request.Cookies["adminCookie"];
         }
 
-
-
-
-
-
     }
 }
 
