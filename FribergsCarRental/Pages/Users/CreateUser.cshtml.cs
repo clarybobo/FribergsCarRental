@@ -40,25 +40,22 @@ namespace FribergsCarRental.Pages.Users
                 return Page();
             }
 
-            //Instanserar upp en user - kopplar samman den till TheUser
             var user = await userRepository.AddUserAsync(TheUser);
             TheUser = user;
 
-            //Letar reda på användarens id via mailen från formuläret
-            var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
-            //Lagrar användar-ID i en string 
-            string userCookie = userId.ToString();
+
+            string userCookie = user.TheUserId.ToString();
 
             //Skapar upp en instans av inbyggda Cookie-klassen
             CookieOptions options = new CookieOptions();
 
             await userRepository.GetUserByEmailAsync(TheUser.Email);
-            await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
+
             httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
             httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
             return RedirectToPage("/Users/CustomerPage");
 
-        }      
+        }
     }
 }
 

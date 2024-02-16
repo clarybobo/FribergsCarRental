@@ -51,6 +51,8 @@ namespace FribergsCarRental.Pages.Bookings
                 Car = await carRepository.GetCarByIdAsync(CarId);
                 Booking.Car = Car;
 
+                //If kollar om det finns nåt värde på customerCookie som kommer med från HTTP-requesten, och omvandlar innehållet till int
+                //för att kunna hitta användarens id i databasen
                 if (int.TryParse(httpContextAccessor.HttpContext.Request.Cookies["customerCookie"], out int userId)) //Användar-id konverteras tillbaka till int
                 {
                     var loggedInUser = await userRepository.GetUserByIdAsync(userId);

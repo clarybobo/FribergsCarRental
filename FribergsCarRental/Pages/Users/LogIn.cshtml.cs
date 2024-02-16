@@ -32,24 +32,31 @@ namespace FribergsCarRental.Pages.Users
 
 
         public async Task<IActionResult> OnPostAsync()
-        {
+        {   
+            //hämtar en användare från databasen via användarens e-mail
             var user = await userRepository.GetUserByEmailAsync(TheUser.Email);
-            var userId = await userRepository.GetLoggedInUserIdAsync(TheUser.Email);
-            string userCookie = userId.ToString();
-           
-            CookieOptions options = new CookieOptions();
+
             if (user != null && user.Password == TheUser.Password)
             {
+                //omvanddlar användar-ID till en string för att kunna lagra det i en cookie
+                string userCookie = user.TheUserId.ToString();
 
-                httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);                
+                //För att cookies ska kunna skapas instanseras en instans av Cookie-klassen - "options"
+                CookieOptions options = new CookieOptions();
 
+
+                //användarens namn blir till en cookie "userFirstName"
+                httpContextAccessor.HttpContext.Response.Cookies.Append("userFirstName", user.FirstName, options);
+
+                //är användaren admin tilldelas en adminCookie som innehåller användarens id
                 if (user.IsAdmin)
-                {                    
+                {
                     httpContextAccessor.HttpContext.Response.Cookies.Append("adminCookie", userCookie, options);
                     return RedirectToPage("/Users/AdminPage");
                 }
+                //annars tilldelas en customerCookie med användarens id
                 else
-                {                    
+                {
                     httpContextAccessor.HttpContext.Response.Cookies.Append("customerCookie", userCookie, options);
                     return RedirectToPage("/Users/CustomerPage");
                 }

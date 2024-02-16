@@ -11,6 +11,7 @@ namespace FribergsCarRental.Data
         {
             this.applicationDbContext = applicationDbContext;
         }
+
         public async Task<IEnumerable<TheUser>> GetAllUsersAsync()
         {
             return await applicationDbContext.TheUsers.OrderBy(u => u.TheUserId).ToListAsync();
@@ -57,13 +58,7 @@ namespace FribergsCarRental.Data
         public async Task<TheUser> GetUserByEmailAsync(string email)
         {
             return await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);            
-        }
-
-        public async Task<int> GetLoggedInUserIdAsync(string email)
-        {
-            var user = await applicationDbContext.TheUsers.FirstOrDefaultAsync(u => u.Email == email);
-            return user?.TheUserId ?? 0;
-        }
+        }   
             
     }
 }
