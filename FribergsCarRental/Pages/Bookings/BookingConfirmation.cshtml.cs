@@ -21,21 +21,39 @@ namespace FribergsCarRental.Pages.Bookings
                 this.bookingRepository = bookingRepository;
             }
 
+            [BindProperty]
             public Booking Booking { get; set; }
 
+    
 
-            public async Task<IActionResult> OnGetAsync(int id)
+
+            public async Task<IActionResult> OnGetAsync(int? id)
             {
-                // Fetch the booking details from the repository based on the bookingId
-                Booking = await bookingRepository.GetBookingByIdAsync(id);
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-                // Check if the booking exists
+                var booking = await bookingRepository.GetBookingByIdAsync(id);
+
+                if (booking == null)
+                {
+                    return NotFound();
+                }
+                Booking = booking;
+                return Page();
+            }
+
+            public async Task<IActionResult> OnPostAsync()
+            {
+                // If the Booking property is null or the BookingId is not set, return a 404 Not Found
                 if (Booking == null)
                 {
                     return NotFound();
                 }
 
-                return Page();
+                // Redirect to the confirmation page and pass the booking ID as a query parameter
+                return RedirectToPage("/Bookings/CustomersBookingIndex");
             }
         }
     }

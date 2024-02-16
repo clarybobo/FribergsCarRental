@@ -60,7 +60,7 @@ namespace FribergsCarRental.Pages.Bookings
                 var booking = await bookingRepository.AddBookingAsync(Booking);
                 Booking = booking;
 
-                return RedirectToPage("/Bookings/BookingConfirmation");
+                return RedirectToPage("/Bookings/BookingConfirmation", new { id = Booking.BookingId });
             }
         }
     }
