@@ -3,7 +3,9 @@
 
 @{
     ViewData["Title"] = "CarIndex";
-}<br /><br />
+}
+<br />
+<br />
 <h3>Fribergs bilar - Logga in eller skapa konto för att hyra</h3>
 <br />
 
@@ -11,16 +13,17 @@
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Car[0].Brand)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Car[0].Model)
             </th>
-            <th>
+         @*    <th>
                 @Html.DisplayNameFor(model => model.Car[0].PictureURL)
-            </th>
-         
+            </th> *@
+
         </tr>
     </thead>
     <tbody>
@@ -28,25 +31,28 @@
         {
             <tr>
                 <td>
+                    <img src="@item.PictureURL" alt="Picture of @item.Model" class="img-thumbnail" />
+                </td> 
+                <td>
                     @Html.DisplayFor(modelItem => item.Brand)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Model)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PictureURL)
-                </td>
+                @*       <td>
+            <img src="@item.PictureURL" alt="Picture of @item.Model" class="img-thumbnail" />
+            </td> *@
 
                 @if (User.IsInRole("Admin"))
                 {
                     <td>
-                        <a asp-page="EditCar" asp-route-id="@item.CarId">Ändra</a> |                      
+                        <a asp-page="EditCar" asp-route-id="@item.CarId">Ändra</a> |
                         <a asp-page="DeleteCar" asp-route-id="@item.CarId">Ta bort</a> |
                     </td>
                 }
-              
+
             </tr>
-        }     
+        }
     </tbody>
 </table>
 

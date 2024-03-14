@@ -10,16 +10,14 @@
 
 <table class="table">
     <thead>
-        <tr>
+        <tr><th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Cars[0].Brand)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cars[0].Model)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cars[0].PictureURL)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -28,16 +26,17 @@
         {
             <tr>
                 <td>
+                    <img src="@item.PictureURL" alt="Picture of @item.Model" class="img-thumbnail" width="200"/>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Brand)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Model)
-                </td>
+                </td>             
                 <td>
-                    @Html.DisplayFor(modelItem => item.PictureURL)
-                </td>
-                <td>
-                    <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId">Boka</a>
+
+                    <a asp-page="/Bookings/CreateBooking" asp-route-id="@item.CarId" class="btn">Boka</a>                    
                 </td>
             </tr>
         }

@@ -1,5 +1,4 @@
-﻿
-@page
+﻿@page
 @model FribergsCarRental.Pages.Bookings.BookingIndexModel
 
 @{
@@ -11,19 +10,20 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.TheUser)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.TheUser.FirstName)
-            @Html.DisplayFor(model => model.Booking.TheUser.LastName)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Booking.Car)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Booking.Car.Brand)
             @Html.DisplayFor(model => model.Booking.Car.Model)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Booking.TheUser)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Booking.TheUser.FirstName)
+            @Html.DisplayFor(model => model.Booking.TheUser.LastName)
+        </dd>
+
 
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Booking.StartDate)

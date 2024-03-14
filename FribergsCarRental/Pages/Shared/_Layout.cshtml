@@ -15,6 +15,7 @@
 
         var adminCookie = Context.Request.Cookies["adminCookie"];
         var customerCookie = Context.Request.Cookies["customerCookie"];
+        var userFirstName = Context.Request.Cookies["userFirstName"];
     }
 
 
@@ -37,7 +38,10 @@
                         <a class="navigationlink" asp-area="" asp-page="/Bookings/CustomersBookingIndex">MINA BOKNINGAR</a>
                     </li>
                     <li>
-                        <a class="navigationlink" asp-area="" asp-page="/Users/Login">LOGGA UT</a>
+                        <a class="navigationlink" asp-area="" asp-page="/Users/Login">LOGGA UT</a> 
+                    </li>                   
+                    <li>
+                        Inloggad som: @userFirstName
                     </li>
                 }
 
@@ -51,6 +55,9 @@
                     </li>
                     <li>
                         <a class="navigationlink" asp-area="" asp-page="/Users/Login">LOGGA UT</a>
+                    </li>                    
+                    <li>
+                        Inloggad som: ADMIN
                     </li>
                 }
 
